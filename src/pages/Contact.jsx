@@ -6,7 +6,7 @@ import './Contact.css'
 const contactInfo = [
   { label: 'Phone',    value: '0112745183 / 0112837525',               sub: 'Pannipitiya Main · Mon – Sun · 8am – 6pm' },
   { label: 'Email',    value: 'newsagarikadrivingschool@gmail.com',    sub: 'We reply within four hours' },
-  { label: 'Main Branch', value: '279/11, High Level Road, Pannipitiya', sub: 'Plus 5 more branches in Colombo' },
+  { label: 'Main Branch', value: '279/11, High Level Road, Pannipitiya', sub: 'Plus 4 more branches in Colombo' },
   { label: 'Learning Time', value: 'Mon – Sun · 8am – 6pm',            sub: 'Open every day of the week' }
 ]
 
@@ -21,7 +21,7 @@ const branches = [
 const faqs = [
   { q: 'What courses do you offer?', a: 'We offer Full Time, Refresher, VIP, Off Peak, Customized and Special courses — covering every vehicle class from motorcycle to passenger bus.' },
   { q: 'What kind of vehicles do you use for training?', a: 'We use brand new vehicles equipped with the "Dual pedal system" for maximum safety and confidence during every lesson.' },
-  { q: 'How many branches do you have?', a: 'We have six branches across the Colombo district: Pannipitiya (Main), Thalawathugoda, Werahera, Hokandara and Mattegoda.' },
+  { q: 'How many branches do you have?', a: 'We have five branches across the Colombo district: Pannipitiya (Main), Thalawathugoda, Werahera, Hokandara and Mattegoda.' },
   { q: 'What are your learning hours?', a: 'Our learning time is Monday to Sunday, 8:00am to 6:00pm. We are open every day of the week to accommodate every learner\'s schedule.' }
 ]
 
@@ -44,7 +44,7 @@ export default function Contact() {
       <PageHero
         eyebrow="Let's Talk"
         title="Get in touch."
-        subtitle="Six branches across the Colombo district. Drop us a message and we will be in your inbox within four hours."
+        subtitle="Five branches across the Colombo district. Drop us a message and we will be in your inbox within four hours."
       />
 
       <section className="section section--alt">
@@ -152,7 +152,7 @@ export default function Contact() {
           <div className="section-heading section-heading--center">
             <Reveal><span className="eyebrow">Our Branches</span></Reveal>
             <Reveal delay={0.1}>
-              <h2>Six branches across <span className="serif-italic text-accent">Colombo.</span></h2>
+              <h2>Five branches across <span className="serif-italic text-accent">Colombo.</span></h2>
             </Reveal>
           </div>
 

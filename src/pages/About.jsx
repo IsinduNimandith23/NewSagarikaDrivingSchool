@@ -13,7 +13,7 @@ const timeline = [
   { year: '1960', title: 'Founded in Badulla',         text: 'Established by Mr. Romanis as the first driving school in Uva Province, setting the foundation for decades of trusted instruction.' },
   { year: '1970s', title: 'A family legacy continues', text: 'After the founder\'s passing, his sons carried New Sagarika Driving School forward, opening branches in cities across Sri Lanka.' },
   { year: '1990s', title: 'Expansion to Colombo',      text: 'New Sagarika Driving School established a strong presence in the Colombo district with new branches and a growing fleet.' },
-  { year: '2010s', title: 'Six Colombo branches',      text: 'Pannipitiya (Main), Thalawathugoda, Werahera, Hokandara and Mattegoda branches serving the western region.' },
+  { year: '2010s', title: 'Five Colombo branches',     text: 'Pannipitiya (Main), Thalawathugoda, Werahera, Hokandara and Mattegoda branches serving the western region.' },
   { year: 'Today', title: '65+ years of excellence',   text: 'An A grade driving school delivering training with brand new dual-pedal vehicles for every vehicle class.' }
 ]
 
@@ -30,7 +30,7 @@ export default function About() {
       <PageHero
         eyebrow="Who We Are"
         title="About New Sagarika Driving School."
-        subtitle="An A grade driving school based in Pannipitiya with five more branches across the Colombo district — over 65 years of trusted driver education."
+        subtitle="An A grade driving school based in Pannipitiya with four more branches across the Colombo district — over 65 years of trusted driver education."
       />
 
       <section className="section">
@@ -53,7 +53,7 @@ export default function About() {
               </h2>
               <p>
                 New Sagarika Driving School is an A grade driving school based in
-                Pannipitiya along with five more branches in the Colombo district.
+                Pannipitiya along with four more branches in the Colombo district.
                 Training and licensing are provided for all classes of vehicles —
                 from motorcycles to passenger buses — with a complete set of
                 component guides.

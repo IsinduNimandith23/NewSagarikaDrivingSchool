@@ -17,7 +17,7 @@ const features = [
 const stats = [
   { value: '65+',    label: 'Years Experience' },
   { value: 'A',      label: 'Grade Driving School' },
-  { value: '6',      label: 'Branches in Colombo' },
+  { value: '5',      label: 'Branches in Colombo' },
   { value: 'All',    label: 'Vehicle Classes' }
 ]
 

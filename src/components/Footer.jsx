@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="footer__col footer__brand">
           <Logo />
           <p>
-            An A grade driving school since 1960. Six branches across Colombo,
+            An A grade driving school since 1960. Five branches across Colombo,
             brand new dual-pedal vehicles, and training for every vehicle class
             from motorcycle to passenger bus.
           </p>
