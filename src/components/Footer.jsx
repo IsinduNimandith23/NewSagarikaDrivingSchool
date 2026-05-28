@@ -10,8 +10,9 @@ export default function Footer() {
         <div className="footer__col footer__brand">
           <Logo />
           <p>
-            Sri Lanka's modern driving school. Certified instructors,
-            new vehicles, and a curriculum built for confident, safe drivers.
+            An A grade driving school since 1960. Six branches across Colombo,
+            brand new dual-pedal vehicles, and training for every vehicle class
+            from motorcycle to passenger bus.
           </p>
           <div className="footer__social">
             {['Facebook', 'Instagram', 'YouTube', 'WhatsApp'].map((s) => (
@@ -33,19 +34,20 @@ export default function Footer() {
 
         <div className="footer__col">
           <h4>Courses</h4>
-          <span>Light Vehicle (Car)</span>
-          <span>Motorcycle</span>
-          <span>Three Wheeler</span>
-          <span>Heavy Vehicle</span>
-          <span>Defensive Driving</span>
+          <span>Full Time Course</span>
+          <span>Refresher Course</span>
+          <span>VIP Course</span>
+          <span>Off Peak Course</span>
+          <span>Customized Course</span>
+          <span>Special Course</span>
         </div>
 
         <div className="footer__col">
           <h4>Contact</h4>
-          <span>+94 77 123 4567</span>
-          <span>hello@sagarikadriving.lk</span>
-          <span>Main Street, Colombo</span>
-          <span>Open: Mon - Sat · 7am - 7pm</span>
+          <span>0112745183 / 0112837525</span>
+          <span>newsagarikadrivingschool@gmail.com</span>
+          <span>279/11, High Level Road, Pannipitiya</span>
+          <span>Open: Mon - Sun · 8am - 6pm</span>
         </div>
       </div>
 

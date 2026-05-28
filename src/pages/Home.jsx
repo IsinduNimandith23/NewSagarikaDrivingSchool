@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import Reveal from '../components/Reveal'
 import './Home.css'
 
+
 const features = [
   { num: '01', title: 'Certified Instructors', text: 'Licensed trainers with over a decade of road experience guide every lesson.' },
   { num: '02', title: 'Modern Vehicle Fleet',  text: 'Dual-control, fully-serviced cars and bikes with the latest safety standards.' },
@@ -14,29 +15,26 @@ const features = [
 ]
 
 const stats = [
-  { value: '15',     label: 'Years Established' },
-  { value: '12,000', label: 'Drivers Trained' },
-  { value: '96%',    label: 'First-Time Pass' },
-  { value: '4',      label: 'Branches Islandwide' }
+  { value: '65+',    label: 'Years Experience' },
+  { value: 'A',      label: 'Grade Driving School' },
+  { value: '6',      label: 'Branches in Colombo' },
+  { value: 'All',    label: 'Vehicle Classes' }
 ]
 
 const courses = [
-  { tag: 'Light Vehicle', title: 'Class B — Car',        time: '4–6 weeks', price: 'Rs. 35,000' },
-  { tag: 'Two Wheeler',   title: 'Class A — Motorcycle', time: '2–3 weeks', price: 'Rs. 18,000' },
-  { tag: 'Three Wheeler', title: 'Class C — Tuk-Tuk',    time: '3 weeks',   price: 'Rs. 22,000' },
-  { tag: 'Heavy Vehicle', title: 'Class D-E — Truck',    time: '6–8 weeks', price: 'Rs. 65,000' }
+  { tag: 'Programme', title: 'Full Time Course',  time: 'Flexible', price: 'Enquire' },
+  { tag: 'Programme', title: 'Refresher Course',  time: 'Flexible', price: 'Enquire' },
+  { tag: 'Programme', title: 'VIP Course',        time: 'Flexible', price: 'Enquire' },
+  { tag: 'Programme', title: 'Off Peak Course',   time: 'Flexible', price: 'Enquire' }
 ]
 
 const testimonials = [
-  { name: 'Nimal P.',    role: 'Class B graduate', text: 'The patient, structured approach gave me confidence from the very first lesson. I passed first attempt.' },
-  { name: 'Anushka R.',  role: 'Class A graduate', text: 'My instructor was thorough, friendly and made every session feel safe. The best decision I made this year.' },
-  { name: 'Kasun M.',    role: 'Class D graduate', text: 'The booking app made scheduling effortless and the heavy-vehicle training facility is genuinely world class.' }
+  { name: 'Nimal P.',    role: 'Full Time Course graduate', text: 'The patient, structured approach gave me confidence from the very first lesson. I passed first attempt.' },
+  { name: 'Anushka R.',  role: 'VIP Course graduate',       text: 'My instructor was thorough, friendly and made every session feel safe. The best decision I made this year.' },
+  { name: 'Kasun M.',    role: 'Special Course graduate',   text: 'The brand new dual-pedal vehicles made everything feel safe — the heavy-vehicle training is genuinely world class.' }
 ]
 
 function Hero() {
-  const { scrollY } = useScroll()
-  const titleY = useTransform(scrollY, [0, 600], [0, 120])
-
   return (
     <section className="hero">
       <div className="hero__media">
@@ -54,7 +52,7 @@ function Hero() {
       </div>
 
       <div className="container hero__content">
-        <motion.div className="hero__left" style={{ y: titleY }}>
+        <div className="hero__left">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -72,7 +70,7 @@ function Hero() {
           >
             Driving<br />School
           </motion.h1>
-        </motion.div>
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -82,13 +80,13 @@ function Hero() {
         >
           <h3 className="hero__subhead">Real lessons,<br />real results.</h3>
           <p>
-            Fifteen years of patient, professional instruction. Modern vehicles,
-            certified instructors and a curriculum built to make you license-ready
-            with total confidence.
+            Over 65 years of trusted, professional instruction. An A grade driving
+            school with brand new dual-pedal vehicles, training for every vehicle
+            class — from motorcycle to passenger bus.
           </p>
           <Link to="/courses" className="hero__cta-link">
             <span className="hero__cta-arrow">↗</span>
-            <span>Take a closer look at our courses and what makes Sagarika different.</span>
+            <span>Take a closer look at our courses and what makes New Sagarika Driving School different.</span>
           </Link>
         </motion.div>
       </div>
@@ -132,7 +130,7 @@ function Features() {
       <div className="container">
         <div className="features__head">
           <Reveal>
-            <span className="eyebrow">Why Sagarika</span>
+            <span className="eyebrow">Why New Sagarika Driving School</span>
             <h2>A driving school built on <span className="serif-italic text-accent">trust.</span></h2>
           </Reveal>
           <Reveal delay={0.15} direction="left">
@@ -199,17 +197,17 @@ function Marquee() {
     <div className="marquee">
       <div className="marquee-track">
         <span>Safety First</span><span className="hot">✦</span>
-        <span>Certified Instructors</span><span className="hot">✦</span>
-        <span>Modern Fleet</span><span className="hot">✦</span>
-        <span>96% Pass Rate</span><span className="hot">✦</span>
-        <span>Defensive Driving</span><span className="hot">✦</span>
-        <span>Since 2009</span><span className="hot">✦</span>
+        <span>A Grade Driving School</span><span className="hot">✦</span>
+        <span>Dual Pedal Vehicles</span><span className="hot">✦</span>
+        <span>All Vehicle Classes</span><span className="hot">✦</span>
+        <span>Highway Code Trained</span><span className="hot">✦</span>
+        <span>Since 1960</span><span className="hot">✦</span>
         <span>Safety First</span><span className="hot">✦</span>
-        <span>Certified Instructors</span><span className="hot">✦</span>
-        <span>Modern Fleet</span><span className="hot">✦</span>
-        <span>96% Pass Rate</span><span className="hot">✦</span>
-        <span>Defensive Driving</span><span className="hot">✦</span>
-        <span>Since 2009</span><span className="hot">✦</span>
+        <span>A Grade Driving School</span><span className="hot">✦</span>
+        <span>Dual Pedal Vehicles</span><span className="hot">✦</span>
+        <span>All Vehicle Classes</span><span className="hot">✦</span>
+        <span>Highway Code Trained</span><span className="hot">✦</span>
+        <span>Since 1960</span><span className="hot">✦</span>
       </div>
     </div>
   )
@@ -271,11 +269,11 @@ export default function Home() {
   return (
     <div className="page home">
       <Hero />
-      <StatsBand />
       <Features />
       <Marquee />
       <CoursesPreview />
       <Testimonials />
+      <StatsBand />
       <CTA />
     </div>
   )

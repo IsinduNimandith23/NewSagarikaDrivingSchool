@@ -4,24 +4,24 @@ import { Link } from 'react-router-dom'
 import './About.css'
 
 const values = [
-  { num: '01', title: 'Mission', text: 'To produce confident, safety-first drivers through patient, modern instruction.' },
-  { num: '02', title: 'Vision',  text: 'To be Sri Lanka\'s most respected and trusted driver-education institution.' },
-  { num: '03', title: 'Values',  text: 'Safety, integrity, patience and lifelong learning shape every lesson we deliver.' }
+  { num: '01', title: 'Our Vision',  text: 'To excel as a leader among the finest in the industry.' },
+  { num: '02', title: 'Our Mission', text: 'To provide professional driving training aligned with highway regulations and the Highway Act.' },
+  { num: '03', title: 'Our Values',  text: 'Discipline, safety and integrity — taught through the road ordinance and international standards.' }
 ]
 
 const timeline = [
-  { year: '2009', title: 'Founded in Colombo',         text: 'Started with two cars, one instructor and a vision to modernise driver training in Sri Lanka.' },
-  { year: '2014', title: 'Five thousand graduates',    text: 'Expanded to four branches and added motorcycle and three-wheeler programs to our offering.' },
-  { year: '2019', title: 'Digital platform launch',    text: 'Online booking, progress tracking and digital mock examinations went live for every student.' },
-  { year: '2022', title: 'Heavy-vehicle facility',     text: 'Built a dedicated truck and bus training ground with full reverse and parking simulators.' },
-  { year: '2025', title: 'Twelve thousand certified',  text: 'Awarded Best Driving School of the Year by the National Road Safety Council of Sri Lanka.' }
+  { year: '1960', title: 'Founded in Badulla',         text: 'Established by Mr. Romanis as the first driving school in Uva Province, setting the foundation for decades of trusted instruction.' },
+  { year: '1970s', title: 'A family legacy continues', text: 'After the founder\'s passing, his sons carried New Sagarika Driving School forward, opening branches in cities across Sri Lanka.' },
+  { year: '1990s', title: 'Expansion to Colombo',      text: 'New Sagarika Driving School established a strong presence in the Colombo district with new branches and a growing fleet.' },
+  { year: '2010s', title: 'Six Colombo branches',      text: 'Pannipitiya (Main), Thalawathugoda, Werahera, Hokandara and Mattegoda branches serving the western region.' },
+  { year: 'Today', title: '65+ years of excellence',   text: 'An A grade driving school delivering training with brand new dual-pedal vehicles for every vehicle class.' }
 ]
 
 const team = [
-  { name: 'Sagara Perera',     role: 'Founder & Chief Instructor', initials: 'SP' },
-  { name: 'Nimali Fernando',   role: 'Senior Instructor — Class B', initials: 'NF' },
-  { name: 'Dilan Wijesekara',  role: 'Heavy Vehicle Specialist',    initials: 'DW' },
-  { name: 'Sanduni Jayasinghe', role: 'Theory & Exam Coach',        initials: 'SJ' }
+  { name: 'Mr. Romanis',          role: 'Founder (1960)',                 initials: 'MR' },
+  { name: 'The Romanis Family',   role: 'Continuing the legacy',          initials: 'RF' },
+  { name: 'Senior Instructors',   role: 'Experienced motor traffic examiners', initials: 'SI' },
+  { name: 'Certified Coaches',    role: 'Highway code & theory experts',  initials: 'CC' }
 ]
 
 export default function About() {
@@ -29,39 +29,39 @@ export default function About() {
     <div className="page">
       <PageHero
         eyebrow="Who We Are"
-        title="About New Sagarika."
-        subtitle="A modern driving school on a fifteen-year mission to make Sri Lanka's roads safer, one confident driver at a time."
+        title="About New Sagarika Driving School."
+        subtitle="An A grade driving school based in Pannipitiya with five more branches across the Colombo district — over 65 years of trusted driver education."
       />
 
       <section className="section">
         <div className="container about-intro">
           <Reveal direction="up">
             <div className="about-intro__visual">
-              <div className="about-intro__big">15</div>
+              <div className="about-intro__big">65+</div>
               <div className="about-intro__small">
-                <strong>Years of Excellence</strong>
-                <span>2009 → 2025</span>
+                <strong>Years of Experience</strong>
+                <span>Since 1960</span>
               </div>
             </div>
           </Reveal>
 
           <Reveal direction="up" delay={0.1}>
             <div>
-              <span className="eyebrow">Our Story</span>
+              <span className="eyebrow">About Us</span>
               <h2 style={{ margin: '1rem 0 1.4rem' }}>
-                From <span className="serif-italic text-accent">one car</span> to a movement.
+                An <span className="serif-italic text-accent">A grade</span> driving school.
               </h2>
               <p>
-                New Sagarika Driving School began in 2009 with a single dual-control
-                sedan, a passionate founder and a simple belief — that driving
-                lessons should be modern, patient, and built entirely around the
-                student.
+                New Sagarika Driving School is an A grade driving school based in
+                Pannipitiya along with five more branches in the Colombo district.
+                Training and licensing are provided for all classes of vehicles —
+                from motorcycles to passenger buses — with a complete set of
+                component guides.
               </p>
               <p style={{ marginTop: '1.2rem' }}>
-                Today, we operate four branches, train every license class and
-                have helped over twelve thousand Sri Lankans earn their license.
-                Our digital booking platform and certified instructors keep us at
-                the front of the industry — but our heart remains the same.
+                We deliver our service with brand new vehicles equipped with the
+                "Dual pedal system", ensuring safety and confidence for every
+                learner from the first lesson onward.
               </p>
               <Link to="/contact" className="btn btn-primary" style={{ marginTop: '1.8rem' }}>
                 Visit Our Branch
@@ -72,10 +72,48 @@ export default function About() {
       </section>
 
       <section className="section section--alt">
+        <div className="container about-intro">
+          <Reveal direction="up">
+            <div>
+              <span className="eyebrow">Our History</span>
+              <h2 style={{ margin: '1rem 0 1.4rem' }}>
+                A legacy from <span className="serif-italic text-accent">1960.</span>
+              </h2>
+              <p>
+                The founder of New Sagarika Driving School, Mr. Romanis, was an iconic
+                personality during the early period of the business. He worked
+                closely with the most senior commissioners and well experienced
+                motor traffic examiners while engaging in the business. After he
+                passed away, his sons continued "New Sagarika Driving School" in different
+                cities all around Sri Lanka.
+              </p>
+              <p style={{ marginTop: '1.2rem' }}>
+                Founded in Badulla as the first driving school in Uva Province
+                (1960), New Sagarika Driving School has provided excellent service to society
+                by delivering well-disciplined drivers. With more than 50 years of
+                experience in the industry, our course outlines follow the road
+                ordinance and international standards.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal direction="up" delay={0.1}>
+            <div className="about-intro__visual">
+              <div className="about-intro__big">1960</div>
+              <div className="about-intro__small">
+                <strong>Established</strong>
+                <span>Badulla, Uva Province</span>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="section">
         <div className="container">
           <div className="section-heading section-heading--center">
             <Reveal><span className="eyebrow">What Drives Us</span></Reveal>
-            <Reveal delay={0.1}><h2>Mission, vision & <span className="serif-italic text-accent">values.</span></h2></Reveal>
+            <Reveal delay={0.1}><h2>Vision, mission & <span className="serif-italic text-accent">values.</span></h2></Reveal>
           </div>
 
           <div className="values__grid">
@@ -92,7 +130,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section section--alt">
         <div className="container">
           <div className="section-heading section-heading--center">
             <Reveal><span className="eyebrow">Our Journey</span></Reveal>
@@ -115,7 +153,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="section section--alt">
+      <section className="section">
         <div className="container">
           <div className="section-heading section-heading--center">
             <Reveal><span className="eyebrow">Meet the Team</span></Reveal>

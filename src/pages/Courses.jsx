@@ -6,92 +6,92 @@ import './Courses.css'
 const courses = [
   {
     badge: 'Most Popular',
-    tier: 'Light Vehicle',
-    title: 'Class B — Car',
-    price: 'Rs. 35,000',
-    duration: '4 – 6 weeks',
-    hours: '30 practical + 12 theory',
+    tier: 'Programme',
+    title: 'Full Time Course',
+    price: 'Enquire',
+    duration: 'Flexible',
+    hours: 'Comprehensive schedule',
     features: [
-      'Dual-control hatchback and sedan',
-      'Highway and city driving',
-      'Night driving module',
-      'Mock RTA examination',
+      'All vehicle classes covered',
+      'Brand new dual-pedal vehicles',
+      'Highway code and Highway Act training',
+      'Component guides included',
       'License application support'
     ]
   },
   {
-    badge: 'Quickest',
-    tier: 'Two Wheeler',
-    title: 'Class A — Motorcycle',
-    price: 'Rs. 18,000',
-    duration: '2 – 3 weeks',
-    hours: '20 practical + 8 theory',
-    features: [
-      'Geared and gearless training',
-      'Balance and cornering drills',
-      'Helmet and safety gear provided',
-      'Mock trial track',
-      'License application assistance'
-    ]
-  },
-  {
-    badge: 'Local Favourite',
-    tier: 'Three Wheeler',
-    title: 'Class C — Tuk-Tuk',
-    price: 'Rs. 22,000',
-    duration: '3 weeks',
-    hours: '24 practical + 8 theory',
-    features: [
-      'Income-ready training',
-      'Passenger safety standards',
-      'Route familiarisation',
-      'Meter and fare basics',
-      'License documentation'
-    ]
-  },
-  {
-    badge: 'Pro Tier',
-    tier: 'Heavy Vehicle',
-    title: 'Class D – E',
-    price: 'Rs. 65,000',
-    duration: '6 – 8 weeks',
-    hours: '50 practical + 18 theory',
-    features: [
-      'Heavy-load handling',
-      'Reverse and parking simulators',
-      'Air-brake systems training',
-      'Commercial route exposure',
-      'Job placement support'
-    ]
-  },
-  {
-    badge: 'Advanced',
-    tier: 'Specialist',
-    title: 'Defensive Driving',
-    price: 'Rs. 12,000',
-    duration: '1 week',
-    hours: '8 practical + 6 theory',
-    features: [
-      'Hazard perception drills',
-      'Skid-control fundamentals',
-      'Emergency braking',
-      'Eco-driving techniques',
-      'Certificate of completion'
-    ]
-  },
-  {
-    badge: 'Refresher',
-    tier: 'Returning Drivers',
-    title: 'Refresher Programme',
-    price: 'Rs. 9,500',
-    duration: '1 – 2 weeks',
-    hours: '10 practical sessions',
+    badge: 'Returning Drivers',
+    tier: 'Programme',
+    title: 'Refresher Course',
+    price: 'Enquire',
+    duration: 'Flexible',
+    hours: 'Tailored sessions',
     features: [
       'Confidence rebuild',
       'Modern traffic awareness',
       'Highway re-introduction',
       'Parking and manoeuvring',
       'Personal coach assigned'
+    ]
+  },
+  {
+    badge: 'Premium',
+    tier: 'Programme',
+    title: 'VIP Course',
+    price: 'Enquire',
+    duration: 'Flexible',
+    hours: 'Priority scheduling',
+    features: [
+      'One-to-one personal instruction',
+      'Priority booking slots',
+      'Pick-up and drop-off available',
+      'Senior instructor assigned',
+      'Fast-tracked license process'
+    ]
+  },
+  {
+    badge: 'Convenient',
+    tier: 'Programme',
+    title: 'Off Peak Course',
+    price: 'Enquire',
+    duration: 'Flexible',
+    hours: 'Off-peak hours',
+    features: [
+      'Affordable pricing',
+      'Less crowded sessions',
+      'Daytime weekday slots',
+      'Full curriculum coverage',
+      'Same certified instructors'
+    ]
+  },
+  {
+    badge: 'Tailored',
+    tier: 'Programme',
+    title: 'Customized Course',
+    price: 'Enquire',
+    duration: 'Flexible',
+    hours: 'Built around you',
+    features: [
+      'Schedule designed for you',
+      'Choose modules you need',
+      'Pace set to your comfort',
+      'Targeted skill-building',
+      'Vehicle class of your choice'
+    ]
+  },
+  {
+    badge: 'Special',
+    tier: 'Programme',
+    title: 'Special Course',
+    price: 'Enquire',
+    duration: 'Flexible',
+    hours: 'Specialised training',
+    features: [
+      'Passenger bus training',
+      'Heavy vehicle specialisation',
+      'Commercial route exposure',
+      'Highway Act compliance',
+      'Component guides provided'
     ]
   }
 ]
