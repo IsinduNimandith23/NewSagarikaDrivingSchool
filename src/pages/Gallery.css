@@ -107,5 +107,14 @@
 }
 .gallery__cta h2 { margin-top: 0.4rem; }
 
-@media (max-width: 920px) { .gallery__grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px) { .gallery__grid { grid-template-columns: 1fr; } }
+@media (max-width: 920px) {
+  .gallery__grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .gallery__filters { gap: 0.4rem; margin-bottom: 2rem; }
+  .gallery__filter { padding: 0.5rem 1rem; font-size: 0.82rem; }
+}
+@media (max-width: 560px) {
+  .gallery__grid { grid-template-columns: 1fr; gap: 1rem; }
+  .gallery__tile-info { transform: translateY(0); padding: 1rem; }
+  .gallery__cta { padding: 1.8rem; gap: 1.2rem; border-radius: 18px; flex-direction: column; align-items: flex-start; }
+  .gallery__cta .btn { width: 100%; justify-content: center; }
+}

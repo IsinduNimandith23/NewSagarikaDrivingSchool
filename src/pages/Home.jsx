@@ -36,7 +36,6 @@ const testimonials = [
 function Hero() {
   const { scrollY } = useScroll()
   const titleY = useTransform(scrollY, [0, 600], [0, 120])
-  const fade   = useTransform(scrollY, [0, 500], [1, 0])
 
   return (
     <section className="hero">
@@ -55,7 +54,7 @@ function Hero() {
       </div>
 
       <div className="container hero__content">
-        <motion.div className="hero__left" style={{ y: titleY, opacity: fade }}>
+        <motion.div className="hero__left" style={{ y: titleY }}>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -80,7 +79,6 @@ function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.55 }}
           className="hero__right"
-          style={{ opacity: fade }}
         >
           <h3 className="hero__subhead">Real lessons,<br />real results.</h3>
           <p>

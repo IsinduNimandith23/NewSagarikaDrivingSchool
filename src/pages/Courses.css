@@ -132,7 +132,13 @@
 }
 
 @media (max-width: 980px) { .courses-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 620px) { .courses-grid { grid-template-columns: 1fr; } }
+@media (max-width: 620px) {
+  .courses-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+  .course-tier { padding: 1.6rem; border-radius: 18px; }
+  .course-tier h3 { font-size: 1.35rem; }
+  .course-tier__price span { font-size: 1.7rem; }
+  .course-tier__top { flex-wrap: wrap; gap: 0.4rem; }
+}
 
 /* Process */
 .process { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -166,9 +172,13 @@
 
 @media (max-width: 920px) {
   .process__grid { grid-template-columns: repeat(2, 1fr); }
+  .process-step { padding: 1.8rem 1.2rem; }
   .process-step:nth-child(2n) { border-right: none; }
+  .process-step:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
 }
 @media (max-width: 520px) {
   .process__grid { grid-template-columns: 1fr; }
-  .process-step { border-right: none !important; border-bottom: 1px solid var(--line); }
+  .process-step { border-right: none !important; border-bottom: 1px solid var(--line); padding: 1.6rem 0.2rem; }
+  .process-step__num { font-size: 2rem; }
+  .process-step h3 { font-size: 1.15rem; }
 }
