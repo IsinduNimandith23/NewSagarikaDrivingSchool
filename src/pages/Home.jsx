@@ -29,9 +29,36 @@ const courses = [
 ]
 
 const testimonials = [
-  { name: 'Nimal P.',    role: 'Full Time Course graduate', text: 'The patient, structured approach gave me confidence from the very first lesson. I passed first attempt.' },
-  { name: 'Anushka R.',  role: 'VIP Course graduate',       text: 'My instructor was thorough, friendly and made every session feel safe. The best decision I made this year.' },
-  { name: 'Kasun M.',    role: 'Special Course graduate',   text: 'The brand new dual-pedal vehicles made everything feel safe — the heavy-vehicle training is genuinely world class.' }
+  {
+    name: 'Lola Rose',
+    stars: 5,
+    text: 'Great driving school. They dedicate a half and hour or more than that to an individual student rather than teaching 3 or 4 students at the same time like other learners.'
+  },
+  {
+    name: 'Krishanthi da silva De silva',
+    stars: 5,
+    text: 'Very good driver learning school for beginners. All staff members are very polite, Decent and kindful. My son has learned a better driving within a week. I have recommend high.'
+  },
+  {
+    name: 'Thamara Kandabada',
+    stars: 5,
+    text: 'Took my driving lessons here. Knowledgeable and attentive staff. They help you through the driving license process from start to finish. Recommended.'
+  },
+  {
+    name: 'Mihir De Silva',
+    stars: 5,
+    text: 'Highly recommended.. best driving school In Colombo.'
+  },
+  {
+    name: 'Dewni Abeysinghe',
+    stars: 5,
+    text: 'One of the Best Driving School with friendly service and with best instructors ❤️'
+  },
+  {
+    name: 'Subha',
+    stars: 5,
+    text: 'great place. good service and they will get u through the process. loved their service overall💯'
+  }
 ]
 
 function Hero() {
@@ -213,6 +240,38 @@ function Marquee() {
   )
 }
 
+function GoogleG() {
+  return (
+    <svg className="g-review__google" viewBox="0 0 24 24" aria-label="Google">
+      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
+      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/>
+    </svg>
+  )
+}
+
+function VerifiedBadge() {
+  return (
+    <svg className="g-review__verified" viewBox="0 0 24 24" aria-label="Verified">
+      <circle cx="12" cy="12" r="11" fill="#1A73E8"/>
+      <path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" strokeWidth="2.4" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
+
+function Stars({ count = 5 }) {
+  return (
+    <div className="g-review__stars" aria-label={`${count} out of 5 stars`}>
+      {Array.from({ length: 5 }).map((_, i) => (
+        <svg key={i} viewBox="0 0 24 24" className={i < count ? 'star star--on' : 'star'} aria-hidden="true">
+          <path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7.3L12 17.8 5.7 21.5l1.7-7.3L2 9.5l7.1-.6L12 2z"/>
+        </svg>
+      ))}
+    </div>
+  )
+}
+
 function Testimonials() {
   return (
     <section className="section">
@@ -221,22 +280,25 @@ function Testimonials() {
           <Reveal><span className="eyebrow">Voices</span></Reveal>
           <Reveal delay={0.1}><h2>From the drivers <span className="serif-italic text-accent">we trained.</span></h2></Reveal>
         </div>
-        <div className="testimonials__grid">
-          {testimonials.map((t, i) => (
-            <Reveal key={t.name} direction="up" delay={i * 0.1}>
-              <div className="testimonial">
-                <div className="testimonial__mark">"</div>
-                <p>{t.text}</p>
-                <div className="testimonial__person">
-                  <div className="testimonial__avatar">{t.name[0]}</div>
-                  <div>
-                    <strong>{t.name}</strong>
-                    <span>{t.role}</span>
+        <div className="g-marquee" aria-label="Google reviews carousel">
+          <div className="g-marquee__track">
+            {[...testimonials, ...testimonials].map((t, i) => (
+              <article className="g-review" key={`${t.name}-${i}`} aria-hidden={i >= testimonials.length}>
+                <header className="g-review__head">
+                  <div className="g-review__avatar">{t.name[0].toUpperCase()}</div>
+                  <div className="g-review__id">
+                    <div className="g-review__name">
+                      <strong>{t.name}</strong>
+                      <VerifiedBadge />
+                    </div>
                   </div>
-                </div>
-              </div>
-            </Reveal>
-          ))}
+                  <GoogleG />
+                </header>
+                <Stars count={t.stars} />
+                <p className="g-review__text">{t.text}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
