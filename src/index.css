@@ -1,0 +1,284 @@
+/* ================================================
+   NEW SAGARIKA DRIVING SCHOOL
+   Modern · Bold · Orange + White
+================================================ */
+
+:root {
+  /* Brand */
+  --orange: #FF5E00;
+  --orange-deep: #CC4A00;
+  --orange-light: #FF8B40;
+  --orange-soft: #FFE6D6;
+  --yellow: #F5C954;
+  --yellow-deep: #D6A92F;
+
+  --accent: var(--orange);
+  --accent-deep: var(--orange-deep);
+  --accent-soft: var(--orange-soft);
+
+  --red: var(--orange);
+  --red-deep: var(--orange-deep);
+  --red-soft: var(--orange-soft);
+
+  --ink: #0A0A0A;
+  --ink-2: #1A1A1A;
+  --ink-3: #404040;
+  --muted: #6B6B6B;
+  --line: #ECECEC;
+  --line-2: #F4F4F4;
+
+  --bg: #FFFFFF;
+  --bg-2: #FAFAFA;
+  --bg-3: #F4F4F4;
+
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-bg-strong: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(10, 10, 10, 0.08);
+  --glass-shadow: 0 8px 32px rgba(10, 10, 10, 0.06);
+
+  --font-display: 'Manrope', 'Inter', -apple-system, system-ui, sans-serif;
+  --font-body: 'Inter', -apple-system, system-ui, sans-serif;
+
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 8px;
+
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition: 0.4s var(--ease-out-soft);
+
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root { height: 100%; min-height: 100%; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--bg);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+img { display: block; max-width: 100%; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  color: var(--ink);
+}
+
+h1 { font-size: clamp(3rem, 8vw, 6.5rem); font-weight: 800; }
+h2 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 800; }
+h3 { font-size: clamp(1.2rem, 1.8vw, 1.45rem); font-weight: 700; letter-spacing: -0.02em; }
+h4 { font-size: 1rem; font-weight: 600; letter-spacing: -0.01em; }
+
+p {
+  line-height: 1.65;
+  color: var(--ink-3);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+::selection { background: var(--orange); color: #fff; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-3); }
+::-webkit-scrollbar-thumb { background: var(--ink); border-radius: 10px; }
+
+/* ===== Glass ===== */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+}
+.glass-strong {
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 40px rgba(10, 10, 10, 0.07);
+}
+.glass-warm {
+  background: linear-gradient(160deg, rgba(255,255,255,0.9), rgba(252,227,222,0.7));
+  border: 1px solid rgba(255, 94, 0, 0.18);
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 36px rgba(255, 94, 0, 0.06);
+}
+.glass-card { position: relative; cursor: default; will-change: transform; }
+
+/* ===== Accents ===== */
+.text-accent { color: var(--orange); }
+.text-yellow { color: var(--yellow-deep); }
+.text-muted  { color: var(--muted); }
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--orange) 0%, var(--orange-light) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* keep selector working but make it a normal bold sans accent now (no italic serif) */
+.serif-italic {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 800;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.95rem 1.7rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  border: 1px solid transparent;
+  letter-spacing: -0.005em;
+  transition: all var(--transition);
+  position: relative;
+  white-space: nowrap;
+  font-family: var(--font-body);
+}
+
+.btn-primary { background: var(--ink); color: #fff; }
+.btn-primary:hover {
+  background: var(--orange);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(255, 94, 0, 0.25);
+}
+
+.btn-accent { background: var(--orange); color: #fff; }
+.btn-accent:hover {
+  background: var(--orange-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(255, 94, 0, 0.32);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+}
+.btn-ghost:hover {
+  background: var(--ink);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.btn-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--ink);
+  transition: gap 0.3s var(--ease-out-soft), color 0.3s var(--ease-out-soft);
+}
+.btn-arrow:hover { gap: 0.9rem; color: var(--orange); border-color: var(--orange); }
+
+/* ===== Layout ===== */
+.container { width: min(1500px, 95%); margin: 0 auto; }
+
+.section { padding: clamp(4rem, 8vw, 7rem) 0; position: relative; }
+
+.section-heading { margin-bottom: 3.5rem; max-width: 720px; }
+.section-heading--center { text-align: center; margin-left: auto; margin-right: auto; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  color: var(--orange);
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  font-family: var(--font-body);
+}
+
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+/* ===== Page wrapper =====
+   No top padding here — the Home hero takes the full viewport (nav floats over it),
+   and inner pages use <PageHero> which carries its own top padding. */
+.page {
+  position: relative;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.hairline { height: 1px; background: var(--line); margin: 0; width: 100%; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s var(--ease-out-soft), transform 0.9s var(--ease-out-soft);
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ===== Marquee ===== */
+.marquee {
+  display: flex;
+  overflow: hidden;
+  gap: 3rem;
+  padding: 1.6rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-2);
+  mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+}
+.marquee-track {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  animation: marquee 32s linear infinite;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+.marquee-track span.hot {
+  color: var(--orange);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (max-width: 720px) {
+  .section { padding: 4rem 0; }
+}

@@ -1,0 +1,262 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding: 1.4rem 0;          /* constant — does NOT change on scroll */
+}
+
+/* When scrolled, the whole header bar stays transparent.
+   Only the right-side group gets the iOS-style glass capsule (see below). */
+
+.nav__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.nav__brand { display: flex; align-items: center; }
+
+/* Right-side group: links + CTA together, pushed to the far right.
+   Padding is constant so the layout NEVER shifts when the glass capsule
+   appears — only the visual chrome (background/border/shadow) changes. */
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  padding: 0.5rem 0.5rem 0.5rem 1.6rem;
+  border-radius: 100px;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: background 0.4s var(--ease-out-soft),
+              border-color 0.4s var(--ease-out-soft),
+              box-shadow 0.4s var(--ease-out-soft),
+              backdrop-filter 0.4s var(--ease-out-soft),
+              left 0.6s var(--ease-out-soft),
+              transform 0.6s var(--ease-out-soft);
+}
+
+/* Desktop only: float the right group out of flow so we can slide it
+   smoothly from the far right to the horizontal center when scrolled.
+   The logo stays in flow on the left. */
+@media (min-width: 921px) {
+  .nav__right {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(-100%, -50%);
+  }
+
+  .nav--scrolled .nav__right {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* ===== iOS-style liquid-glass capsule (scrolled) =====
+   Only the visual chrome changes — padding/gap/sizes stay identical so
+   nothing visibly resizes or jumps when the user scrolls. */
+.nav--scrolled .nav__right {
+  background: rgba(20, 20, 22, 0.03);
+  border-color: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  box-shadow:
+    0 10px 36px rgba(0, 0, 0, 0.14),
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+/* Dark variant (if user scrolls while still over a dark surface) */
+.nav--on-dark.nav--scrolled .nav__right {
+  background: rgba(20, 20, 22, 0.03);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 10px 36px rgba(0, 0, 0, 0.2),
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+/* Light pages: white text needs a real dark tint behind it to stay readable */
+.nav--on-light.nav--scrolled .nav__right {
+  background: rgba(20, 20, 22, 0.55);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.22),
+    0 1px 0 rgba(255, 255, 255, 0.1) inset,
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+}
+
+/* ===== Links ===== */
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.nav__link {
+  position: relative;
+  padding: 0.4rem 0;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: color var(--transition);
+  font-family: var(--font-body);
+}
+
+.nav--on-dark  .nav__link { color: rgba(255, 255, 255, 0.82); }
+.nav--on-dark  .nav__link:hover,
+.nav--on-dark  .nav__link--active { color: #FFFFFF; }
+
+.nav--on-light .nav__link { color: var(--ink-3); }
+.nav--on-light .nav__link:hover,
+.nav--on-light .nav__link--active { color: var(--ink); }
+
+/* Once scrolled, the capsule is dark glass on every page — force white text */
+.nav.nav--scrolled .nav__link { color: rgba(255, 255, 255, 0.85); }
+.nav.nav--scrolled .nav__link:hover,
+.nav.nav--scrolled .nav__link--active { color: #FFFFFF; }
+
+/* CTA inside the scrolled capsule: white pill, dark text */
+.nav.nav--scrolled .nav__cta {
+  background: #FFFFFF;
+  color: var(--ink);
+}
+.nav.nav--scrolled .nav__cta:hover {
+  background: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.nav__link--active::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+/* ===== CTA pill ===== */
+.nav__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.4rem 0.4rem 1.2rem;
+  border-radius: 100px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: all 0.3s var(--ease-out-soft);
+  font-family: var(--font-body);
+}
+
+.nav--on-dark .nav__cta {
+  background: #FFFFFF;
+  color: var(--ink);
+}
+.nav--on-dark .nav__cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(255,255,255,0.18);
+}
+
+.nav--on-light .nav__cta {
+  background: var(--ink);
+  color: #FFFFFF;
+}
+.nav--on-light .nav__cta:hover {
+  background: var(--orange);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(255, 94, 0, 0.32);
+}
+
+.nav__cta-arrow {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #FFFFFF;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: transform 0.3s var(--ease-out-soft);
+}
+.nav__cta:hover .nav__cta-arrow { transform: rotate(-45deg); }
+
+/* ===== Mobile burger ===== */
+.nav__burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.nav__burger span {
+  display: block;
+  width: 22px;
+  height: 1.8px;
+  border-radius: 2px;
+  transition: all 0.35s var(--ease-out-soft);
+}
+.nav--on-dark  .nav__burger span { background: #FFFFFF; }
+.nav--on-light .nav__burger span { background: var(--ink); }
+
+.nav__burger--open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav__burger--open span:nth-child(2) { opacity: 0; }
+.nav__burger--open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 920px) {
+  .nav__burger { display: flex; }
+  .nav__cta { display: none; }
+
+  .nav__links {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 4%;
+    right: 4%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.3rem;
+    padding: 1.2rem;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border-radius: 22px;
+    box-shadow: 0 10px 30px rgba(10,10,10,0.08);
+    transform: translateY(-12px) scale(0.98);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.35s var(--ease-out-soft);
+  }
+  .nav__links--open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+  .nav__link,
+  .nav--on-dark .nav__link {
+    text-align: center;
+    padding: 0.85rem 1rem;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+}

@@ -1,0 +1,27 @@
+.page-hero {
+  position: relative;
+  padding: 9rem 0 5rem;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.page-hero__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  text-align: left;
+}
+
+.page-hero h1 {
+  margin: 0 0 1.4rem;
+  font-size: clamp(2.6rem, 7vw, 5.8rem);
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.05em;
+}
+
+.page-hero__sub {
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  color: var(--ink-3);
+  max-width: 620px;
+}
