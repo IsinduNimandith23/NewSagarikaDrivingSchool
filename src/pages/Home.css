@@ -190,26 +190,26 @@
 /* ===== STATS BAND ===== */
 .stats-band {
   padding: 3rem 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  background: var(--bg-2);
 }
 
 .stats-band__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.4rem;
+  gap: 1.2rem;
 }
 
 .stat {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-  padding: 0.4rem 0;
-  border-left: 1px solid var(--line);
-  padding-left: 1.4rem;
+  padding: 1.6rem 1.6rem;
+  border-radius: var(--radius-lg);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border-ink);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
 }
-.stat:first-child { border-left: none; padding-left: 0; }
 
 .stat__value {
   font-family: var(--font-display);
@@ -230,8 +230,8 @@
 
 @media (max-width: 720px) {
   .stats-band { padding: 2rem 0; }
-  .stats-band__grid { grid-template-columns: repeat(2, 1fr); gap: 1.6rem 1.2rem; }
-  .stat { border-left: none; padding-left: 0; }
+  .stats-band__grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .stat { padding: 1.3rem 1.3rem; }
 }
 
 /* ===== FEATURES ===== */
@@ -258,21 +258,26 @@
 .features__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  border-top: 1px solid var(--line);
+  gap: 1.2rem;
 }
 
 .feature {
-  padding: 2.4rem 1.6rem;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  padding: 2.2rem 1.8rem;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  transition: background 0.4s var(--ease-out-soft);
+  border-radius: var(--radius-lg);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border-ink);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
-.feature:hover { background: var(--bg-2); }
-.feature:nth-child(3n) { border-right: none; }
+.feature:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 50px rgba(10, 10, 10, 0.12);
+}
 
 .feature__num {
   font-family: var(--font-body);
@@ -295,13 +300,11 @@
 
 @media (max-width: 920px) {
   .features__grid { grid-template-columns: repeat(2, 1fr); }
-  .feature { padding: 2rem 1.2rem; }
-  .feature:nth-child(3n) { border-right: 1px solid var(--line); }
-  .feature:nth-child(2n) { border-right: none; }
+  .feature { padding: 2rem 1.4rem; }
 }
 @media (max-width: 560px) {
   .features__grid { grid-template-columns: 1fr; }
-  .feature { border-right: none !important; padding: 1.8rem 0.2rem; }
+  .feature { padding: 1.8rem 1.4rem; }
   .feature h3 { font-size: 1.2rem; }
 }
 
@@ -343,9 +346,12 @@
   flex-direction: column;
   gap: 0.8rem;
   padding: 1.8rem;
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.14);
   border-radius: 16px;
-  background: rgba(255,255,255,0.025);
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
   transition: all 0.4s var(--ease-out-soft);
   min-height: 220px;
   position: relative;
@@ -433,9 +439,12 @@
   flex: 0 0 380px;
   margin-right: 1.4rem;
   padding: 1.5rem 1.6rem;
-  background: var(--bg-2);
-  border: 1px solid var(--line);
-  border-radius: 14px;
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border-ink);
+  border-radius: var(--radius-md);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
@@ -443,7 +452,7 @@
 }
 .g-review:hover {
   border-color: var(--accent);
-  box-shadow: 0 14px 30px -18px rgba(0,0,0,0.18);
+  box-shadow: 0 18px 40px -16px rgba(255, 94, 0, 0.28);
 }
 
 .g-review__head {
@@ -526,14 +535,19 @@
 
 /* ===== CTA ===== */
 .cta-lux {
-  background: var(--bg-2);
-  border: 1px solid var(--line);
+  position: relative;
+  background: linear-gradient(160deg, rgba(255,255,255,0.6), rgba(255, 230, 214, 0.4));
+  border: 1px solid rgba(255, 94, 0, 0.18);
   border-radius: 24px;
+  box-shadow: 0 18px 50px rgba(255, 94, 0, 0.1);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   padding: clamp(2.4rem, 5vw, 4rem);
   display: grid;
   grid-template-columns: 1.4fr 1fr;
   align-items: center;
   gap: 2rem;
+  overflow: hidden;
 }
 
 .cta-lux h2 { margin: 0.4rem 0 0.8rem; }

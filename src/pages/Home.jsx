@@ -72,8 +72,8 @@ function Hero() {
           muted
           playsInline
           poster="/hero-poster.jpg"
-        >
-          <source src="/hero.mp4" type="video/mp4" />
+          >
+            <source src="/hero-video.mp4" type="video/mp4" />
         </video>
         <div className="hero__overlay" />
       </div>
