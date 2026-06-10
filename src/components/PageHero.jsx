@@ -2,6 +2,9 @@ import { motion } from 'framer-motion'
 import './PageHero.css'
 
 export default function PageHero({ eyebrow, title, subtitle }) {
+  const hasPeriod = typeof title === 'string' && title.endsWith('.')
+  const text = hasPeriod ? title.slice(0, -1) : title
+
   return (
     <section className="page-hero">
       <div className="container page-hero__inner">
@@ -18,7 +21,8 @@ export default function PageHero({ eyebrow, title, subtitle }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         >
-          {title}
+          {text}
+          {hasPeriod && <span className="page-hero__dot">.</span>}
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 24 }}
@@ -29,7 +33,14 @@ export default function PageHero({ eyebrow, title, subtitle }) {
           {subtitle}
         </motion.p>
       </div>
-      <div className="hairline" />
+
+      <motion.div
+        className="container page-hero__divider"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        aria-hidden="true"
+      />
     </section>
   )
 }

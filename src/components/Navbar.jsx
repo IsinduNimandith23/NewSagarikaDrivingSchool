@@ -51,7 +51,18 @@ export default function Navbar() {
                   `nav__link ${isActive ? 'nav__link--active' : ''}`
                 }
               >
-                {l.label}
+                {({ isActive }) => (
+                  <>
+                    {l.label}
+                    {isActive && (
+                      <motion.span
+                        layoutId="nav-active-dot"
+                        className="nav__dot"
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </>
+                )}
               </NavLink>
             ))}
           </nav>
