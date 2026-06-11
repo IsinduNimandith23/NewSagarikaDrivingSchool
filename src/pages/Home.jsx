@@ -109,7 +109,7 @@ function Hero() {
           <p>
             Over 65 years of trusted, professional instruction. An A grade driving
             school with brand new dual-pedal vehicles, training for every vehicle
-            class — from motorcycle to passenger bus.
+            class - from motorcycle to passenger bus.
           </p>
           <Link to="/courses" className="hero__cta-link">
             <span className="hero__cta-arrow">↗</span>
@@ -162,7 +162,7 @@ function Features() {
           </Reveal>
           <Reveal delay={0.15} direction="left">
             <p className="features__lead">
-              Every detail of our curriculum exists for one reason — to make sure
+              Every detail of our curriculum exists for one reason - to make sure
               the moment you sit behind the wheel alone, you are completely
               prepared for the road ahead.
             </p>

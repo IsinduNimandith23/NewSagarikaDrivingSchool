@@ -256,7 +256,7 @@ p {
 }
 
 /* ===== Page wrapper =====
-   No top padding here — the Home hero takes the full viewport (nav floats over it),
+   No top padding here - the Home hero takes the full viewport (nav floats over it),
    and inner pages use <PageHero> which carries its own top padding. */
 .page {
   position: relative;

@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   z-index: 50;
-  padding: 1.4rem 0;          /* constant — does NOT change on scroll */
+  padding: 1.4rem 0;          /* constant - does NOT change on scroll */
 }
 
 /* When scrolled, the whole header bar stays transparent.
@@ -32,7 +32,7 @@
 
 /* Right-side group: links + CTA together, pushed to the far right.
    Padding is constant so the layout NEVER shifts when the glass capsule
-   appears — only the visual chrome (background/border/shadow) changes. */
+   appears - only the visual chrome (background/border/shadow) changes. */
 .nav__right {
   display: flex;
   align-items: center;
@@ -67,7 +67,7 @@
 }
 
 /* ===== iOS-style liquid-glass capsule (scrolled) =====
-   Only the visual chrome changes — padding/gap/sizes stay identical so
+   Only the visual chrome changes - padding/gap/sizes stay identical so
    nothing visibly resizes or jumps when the user scrolls. */
 .nav--scrolled .nav__right {
   background: rgba(20, 20, 22, 0.03);
@@ -125,7 +125,7 @@
 .nav--on-light .nav__link:hover,
 .nav--on-light .nav__link--active { color: var(--ink); }
 
-/* Once scrolled, the capsule is dark glass on every page — force white text */
+/* Once scrolled, the capsule is dark glass on every page - force white text */
 .nav.nav--scrolled .nav__link { color: rgba(255, 255, 255, 0.85); }
 .nav.nav--scrolled .nav__link:hover,
 .nav.nav--scrolled .nav__link--active { color: #FFFFFF; }
@@ -141,7 +141,7 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 }
 
-/* Hover underline — grows from the centre. Active links use the sliding dot instead. */
+/* Hover underline - grows from the centre. Active links use the sliding dot instead. */
 .nav__link::after {
   content: '';
   position: absolute;
@@ -159,7 +159,7 @@
 .nav__link:hover::after { transform: scaleX(1); }
 .nav__link--active::after { display: none; }
 
-/* Active indicator — a Framer Motion layoutId dot that springs between links.
+/* Active indicator - a Framer Motion layoutId dot that springs between links.
    Centred with auto margins (no transform) so Motion owns the transform. */
 .nav__dot {
   position: absolute;

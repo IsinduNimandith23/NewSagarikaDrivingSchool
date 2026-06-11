@@ -6,7 +6,7 @@ import './About.css'
 const values = [
   { num: '01', title: 'Our Vision',  text: 'To excel as a leader among the finest in the industry.' },
   { num: '02', title: 'Our Mission', text: 'To provide professional driving training aligned with highway regulations and the Highway Act.' },
-  { num: '03', title: 'Our Values',  text: 'Discipline, safety and integrity — taught through the road ordinance and international standards.' }
+  { num: '03', title: 'Our Values',  text: 'Discipline, safety and integrity - taught through the road ordinance and international standards.' }
 ]
 
 const timeline = [
@@ -30,7 +30,7 @@ export default function About() {
       <PageHero
         eyebrow="Who We Are"
         title="About New Sagarika Driving School."
-        subtitle="An A grade driving school based in Pannipitiya with four more branches across the Colombo district — over 65 years of trusted driver education."
+        subtitle="An A grade driving school based in Pannipitiya with four more branches across the Colombo district - over 65 years of trusted driver education."
       />
 
       <section className="section">
@@ -54,8 +54,8 @@ export default function About() {
               <p>
                 New Sagarika Driving School is an A grade driving school based in
                 Pannipitiya along with four more branches in the Colombo district.
-                Training and licensing are provided for all classes of vehicles —
-                from motorcycles to passenger buses — with a complete set of
+                Training and licensing are provided for all classes of vehicles -
+                from motorcycles to passenger buses - with a complete set of
                 component guides.
               </p>
               <p style={{ marginTop: '1.2rem' }}>

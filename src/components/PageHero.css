@@ -5,7 +5,7 @@
   overflow: hidden;
 }
 
-/* Content aligns with the same container edge as the logo/nav —
+/* Content aligns with the same container edge as the logo/nav -
    no inner max-width centering, so the heading no longer floats mid-page. */
 .page-hero__inner {
   position: relative;
@@ -31,7 +31,7 @@
   max-width: 620px;
 }
 
-/* Full-width orange divider spanning the container — animates in from the left.
+/* Full-width orange divider spanning the container - animates in from the left.
    Scoped under .page-hero so the margin beats .container's `margin: 0 auto`. */
 .page-hero .page-hero__divider {
   height: 2px;

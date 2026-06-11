@@ -24,7 +24,7 @@ const branches = [
 ]
 
 const faqs = [
-  { q: 'What courses do you offer?', a: 'We offer Full Time, Refresher, VIP, Off Peak, Customized and Special courses — covering every vehicle class from motorcycle to passenger bus.' },
+  { q: 'What courses do you offer?', a: 'We offer Full Time, Refresher, VIP, Off Peak, Customized and Special courses - covering every vehicle class from motorcycle to passenger bus.' },
   { q: 'What kind of vehicles do you use for training?', a: 'We use brand new vehicles equipped with the "Dual pedal system" for maximum safety and confidence during every lesson.' },
   { q: 'How many branches do you have?', a: 'We have five branches across the Colombo district: Pannipitiya (Main), Thalawathugoda, Werahera, Hokandara and Mattegoda.' },
   { q: 'What are your learning hours?', a: 'Our learning time is Monday to Sunday, 8:00am to 6:00pm. We are open every day of the week to accommodate every learner\'s schedule.' }
@@ -129,7 +129,7 @@ export default function Contact() {
             <Reveal direction="up" delay={0.1}>
               <div className="contact-side__card">
                 <span className="eyebrow">Visit Us</span>
-                <h3 style={{ marginTop: '0.6rem' }}>Pannipitiya — Main Branch</h3>
+                <h3 style={{ marginTop: '0.6rem' }}>Pannipitiya - Main Branch</h3>
                 <p style={{ color: 'var(--ink-3)' }}>279/11, High Level Road, Mahalwarawa, Kottawa, Pannipitiya</p>
                 <div className="contact-map__visual">
                   <iframe
