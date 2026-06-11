@@ -36,19 +36,13 @@
   position: absolute;
   inset: 0;
   z-index: 2;
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 3rem;
-  align-items: end;
-  padding-bottom: clamp(3rem, 8vh, 6rem);
-  padding-top: clamp(6rem, 14vh, 8rem);
-  align-content: end;
-}
-
-.hero__left {
   display: flex;
   flex-direction: column;
-  gap: 1.4rem;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 1.3rem;
+  padding-bottom: clamp(3.5rem, 9vh, 6.5rem);
+  padding-top: clamp(6rem, 14vh, 8rem);
 }
 
 .hero__eyebrow {
@@ -84,61 +78,74 @@
   word-break: break-word;
 }
 
-.hero__right {
-  max-width: 380px;
-  justify-self: end;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  text-align: left;
-  padding-bottom: 0.3rem;
-}
-
-.hero__subhead {
+.hero__tagline {
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
-  line-height: 1.05;
-  color: #FFFFFF;
-  letter-spacing: -0.025em;
+  font-weight: 600;
+  font-size: clamp(1.05rem, 1.7vw, 1.5rem);
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: -0.02em;
+  margin: 0;
 }
 
-.hero__right p {
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 0.94rem;
-  line-height: 1.6;
-}
-
-.hero__cta-link {
+.hero__actions {
   display: flex;
-  align-items: flex-start;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  padding-top: 0.5rem;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   gap: 0.6rem;
-  color: #FFFFFF;
-  font-size: 0.88rem;
-  line-height: 1.5;
-  padding-top: 0.6rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  transition: color 0.3s var(--ease-out-soft), border-color 0.3s var(--ease-out-soft);
+  padding: 1rem 1.9rem;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.35s var(--ease-out-soft), color 0.35s var(--ease-out-soft),
+    border-color 0.35s var(--ease-out-soft), box-shadow 0.35s var(--ease-out-soft);
 }
 
-.hero__cta-link:hover {
-  color: var(--orange);
-  border-color: var(--orange);
-}
-
-.hero__cta-arrow {
-  display: inline-grid;
-  place-items: center;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
+.hero-btn--primary {
   background: var(--orange);
   color: #FFFFFF;
-  font-size: 0.78rem;
-  flex-shrink: 0;
-  transition: transform 0.3s var(--ease-out-soft);
+  box-shadow: 0 10px 30px rgba(255, 94, 0, 0.35);
 }
-.hero__cta-link:hover .hero__cta-arrow { transform: rotate(8deg) scale(1.05); }
+.hero-btn--primary:hover {
+  background: var(--orange-deep);
+  box-shadow: 0 16px 40px rgba(255, 94, 0, 0.45);
+}
+
+.hero-btn__arrow {
+  font-size: 0.85em;
+  transition: transform 0.35s var(--ease-out-soft);
+}
+.hero-btn--primary:hover .hero-btn__arrow { transform: translate(2px, -2px); }
+
+.hero-btn--ghost {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+}
+.hero-btn--ghost:hover {
+  background: #FFFFFF;
+  color: var(--ink);
+  border-color: #FFFFFF;
+}
+
+.hero-btn__icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
 
 .hero__scroll-cue {
   position: absolute;
@@ -172,24 +179,34 @@
     inset: auto;
     min-height: 100vh;
     min-height: 100svh;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding-bottom: 4rem;
-    padding-top: 6rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1.2rem;
+    padding-bottom: 5rem;
+    padding-top: 5rem;
   }
-  .hero__right { max-width: 100%; justify-self: stretch; }
+  .hero__eyebrow { align-self: center; }
+  .hero__actions { justify-content: center; }
+  /* Text now sits mid-frame, so darken the middle of the video for legibility. */
+  .hero__overlay {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.38) 50%, rgba(0, 0, 0, 0.75) 100%);
+  }
 }
 
 @media (max-width: 560px) {
   .hero__content {
-    padding-bottom: 3rem;
-    padding-top: 5.5rem;
-    gap: 1rem;
+    padding-bottom: 4.5rem;
+    padding-top: 4.5rem;
+    gap: 1.1rem;
   }
+  /* Keep the type monumental on phones - the desktop drama is the look. */
+  .hero__title { font-size: clamp(3.6rem, 17vw, 5.2rem); line-height: 0.92; }
   .hero__eyebrow { font-size: 0.85rem; }
-  .hero__subhead { font-size: 1.4rem; }
-  .hero__right p { font-size: 0.9rem; }
-  .hero__cta-link { font-size: 0.85rem; }
+  .hero__tagline { font-size: 1.02rem; max-width: 30ch; }
+  .hero__actions { width: 100%; padding-top: 0.4rem; }
+  .hero__actions > * { flex: 1; min-width: 150px; }
+  .hero-btn { width: 100%; padding: 1.05rem 1.4rem; font-size: 0.95rem; }
   .hero__scroll-cue { display: none; }
 }
 

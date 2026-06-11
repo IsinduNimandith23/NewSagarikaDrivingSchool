@@ -79,42 +79,53 @@ function Hero() {
       </div>
 
       <div className="container hero__content">
-        <div className="hero__left">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="hero__eyebrow"
-          >
-            Drive with confidence
-          </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="hero__eyebrow"
+        >
+          Drive with confidence
+        </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="hero__title"
-          >
-            Driving<br />School
-          </motion.h1>
-        </div>
+        <motion.h1
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="hero__title"
+        >
+          Driving<br />School
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="hero__tagline"
+        >
+          Real lessons, real results - for over 65 years.
+        </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.55 }}
-          className="hero__right"
+          transition={{ duration: 0.8, delay: 0.65 }}
+          className="hero__actions"
         >
-          <h3 className="hero__subhead">Real lessons,<br />real results.</h3>
-          <p>
-            Over 65 years of trusted, professional instruction. An A grade driving
-            school with brand new dual-pedal vehicles, training for every vehicle
-            class - from motorcycle to passenger bus.
-          </p>
-          <Link to="/courses" className="hero__cta-link">
-            <span className="hero__cta-arrow">↗</span>
-            <span>Take a closer look at our courses and what makes New Sagarika Driving School different.</span>
-          </Link>
+          <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
+            <Link to="/contact" className="hero-btn hero-btn--primary">
+              <span>Book Now</span>
+              <span className="hero-btn__arrow" aria-hidden="true">↗</span>
+            </Link>
+          </motion.div>
+          <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
+            <a href="tel:0112745183" className="hero-btn hero-btn--ghost">
+              <svg className="hero-btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <span>Contact Us</span>
+            </a>
+          </motion.div>
         </motion.div>
       </div>
 
