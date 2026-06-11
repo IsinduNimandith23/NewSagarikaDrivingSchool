@@ -5,15 +5,6 @@ import Reveal from '../components/Reveal'
 import './Home.css'
 
 
-const features = [
-  { num: '01', title: 'Certified Instructors', text: 'Licensed trainers with over a decade of road experience guide every lesson.' },
-  { num: '02', title: 'Modern Vehicle Fleet',  text: 'Dual-control, fully-serviced cars and bikes with the latest safety standards.' },
-  { num: '03', title: 'Digital Learning',      text: 'Track hours, book lessons and study mock tests directly from your phone.' },
-  { num: '04', title: 'Defensive Focus',       text: 'Our curriculum emphasises hazard perception, night driving and emergency control.' },
-  { num: '05', title: '96% Pass Rate',         text: 'The vast majority of our students earn their license on the very first attempt.' },
-  { num: '06', title: 'Flexible Scheduling',   text: 'Morning, evening and weekend lessons. Fit your training around your life.' }
-]
-
 const stats = [
   { value: '65+',    label: 'Years Experience' },
   { value: 'A',      label: 'Grade Driving School' },
@@ -161,7 +152,7 @@ function StatsBand() {
 function Features() {
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
-  const y = useTransform(scrollYProgress, [0, 1], [40, -40])
+  const y = useTransform(scrollYProgress, [0, 1], [30, -30])
 
   return (
     <section ref={ref} className="section features">
@@ -180,16 +171,76 @@ function Features() {
           </Reveal>
         </div>
 
-        <motion.div className="features__grid" style={{ y }}>
-          {features.map((f, i) => (
-            <Reveal key={f.title} direction="up" delay={i * 0.06}>
-              <div className="feature">
-                <div className="feature__num">{f.num}</div>
-                <h3>{f.title}</h3>
-                <p>{f.text}</p>
+        <motion.div className="why-grid" style={{ y }}>
+          <Reveal className="why-cell why-cell--tall" direction="up">
+            <article className="why-tile">
+              <img
+                src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=900&q=70"
+                alt="Student driving with hands on the steering wheel"
+                loading="lazy"
+              />
+              <div className="why-tile__shade" />
+              <div className="why-tile__info">
+                <h3>Certified Instructors</h3>
+                <p>Licensed trainers with over a decade of road experience guide every lesson, one-on-one.</p>
               </div>
-            </Reveal>
-          ))}
+            </article>
+          </Reveal>
+
+          <Reveal className="why-cell" direction="up" delay={0.08}>
+            <article className="why-tile">
+              <img
+                src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=900&q=70"
+                alt="Modern car from our training fleet"
+                loading="lazy"
+              />
+              <div className="why-tile__shade" />
+              <div className="why-tile__info">
+                <h3>Modern Vehicle Fleet</h3>
+                <p>Dual-control, fully-serviced cars and bikes with the latest safety standards.</p>
+              </div>
+            </article>
+          </Reveal>
+
+          <Reveal className="why-cell" direction="up" delay={0.16}>
+            <div className="why-stat">
+              <div className="why-stat__value">96%</div>
+              <p>of our students earn their license on the very first attempt.</p>
+              <span className="why-stat__foot">A Grade · Since 1960</span>
+            </div>
+          </Reveal>
+
+          <Reveal className="why-cell" direction="up" delay={0.12}>
+            <article className="why-tile">
+              <img
+                src="https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?auto=format&fit=crop&w=900&q=70"
+                alt="City streets at night"
+                loading="lazy"
+              />
+              <div className="why-tile__shade" />
+              <div className="why-tile__info">
+                <h3>Defensive &amp; Night Driving</h3>
+                <p>Hazard perception, night driving and emergency control are built into the curriculum.</p>
+              </div>
+            </article>
+          </Reveal>
+
+          <Reveal className="why-cell" direction="up" delay={0.2}>
+            <Link to="/gallery" className="why-tile why-tile--link">
+              <img
+                src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=900&q=70"
+                alt="Open highway stretching ahead"
+                loading="lazy"
+              />
+              <div className="why-tile__shade" />
+              <div className="why-tile__info">
+                <h3>
+                  See lessons in action <span className="why-tile__arrow" aria-hidden="true">→</span>
+                </h3>
+                <p>Browse our gallery of students, vehicles and license-day moments.</p>
+              </div>
+            </Link>
+          </Reveal>
         </motion.div>
       </div>
     </section>
