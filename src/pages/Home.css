@@ -2,6 +2,7 @@
 .hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
   width: 100%;
   overflow: hidden;
   isolation: isolate;
@@ -164,7 +165,13 @@
 }
 
 @media (max-width: 920px) {
+  /* In-flow (not absolute) so a tall stack of hero text can grow the section
+     instead of being clipped by the hero's overflow: hidden on short screens. */
   .hero__content {
+    position: relative;
+    inset: auto;
+    min-height: 100vh;
+    min-height: 100svh;
     grid-template-columns: 1fr;
     gap: 1.5rem;
     padding-bottom: 4rem;
@@ -174,7 +181,6 @@
 }
 
 @media (max-width: 560px) {
-  .hero { min-height: calc(100vh - 0px); }
   .hero__content {
     padding-bottom: 3rem;
     padding-top: 5.5rem;
