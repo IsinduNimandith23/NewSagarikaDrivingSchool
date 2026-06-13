@@ -94,7 +94,7 @@ function Hero() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="hero__tagline"
         >
-          Real lessons, real results — for over&nbsp;65&nbsp;years.
+          Real lessons, real results - for over&nbsp;65&nbsp;years.
         </motion.p>
 
         <motion.div
