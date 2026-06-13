@@ -70,11 +70,13 @@
 .hero__title {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(3.2rem, 13vw, 12rem);
-  line-height: 0.9;
-  letter-spacing: -0.055em;
+  font-size: clamp(3.2rem, 10.5vw, 9.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
   color: #FFFFFF;
   margin: 0;
+  max-width: 14ch;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
   word-break: break-word;
 }
 
@@ -86,6 +88,7 @@
   color: rgba(255, 255, 255, 0.88);
   letter-spacing: -0.02em;
   margin: 0;
+  text-wrap: balance;
 }
 
 .hero__actions {
@@ -200,8 +203,8 @@
     padding-top: 4.5rem;
     gap: 1.1rem;
   }
-  /* Keep the type monumental on phones - the desktop drama is the look. */
-  .hero__title { font-size: clamp(3.6rem, 17vw, 5.2rem); line-height: 0.92; }
+  /* Keep the type bold on phones, but sized so two-word lines don't overflow. */
+  .hero__title { font-size: clamp(2.9rem, 13.5vw, 4.6rem); line-height: 0.95; }
   .hero__eyebrow { font-size: 0.85rem; }
   .hero__tagline { font-size: 1.02rem; max-width: 30ch; }
   .hero__actions { width: 100%; padding-top: 0.4rem; }

@@ -85,7 +85,7 @@ function Hero() {
           transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="hero__title"
         >
-          Driving<br />School
+          Your Journey<br />Begins Here
         </motion.h1>
 
         <motion.p
@@ -94,7 +94,7 @@ function Hero() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="hero__tagline"
         >
-          Real lessons, real results - for over 65 years.
+          Real lessons, real results — for over&nbsp;65&nbsp;years.
         </motion.p>
 
         <motion.div
