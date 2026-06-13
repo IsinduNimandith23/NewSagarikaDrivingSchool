@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import Reveal from '../components/Reveal'
 import './Home.css'
 
@@ -17,6 +17,15 @@ const courses = [
   { tag: 'Programme', title: 'Refresher Course',  time: 'Flexible', price: 'Enquire' },
   { tag: 'Programme', title: 'VIP Course',        time: 'Flexible', price: 'Enquire' },
   { tag: 'Programme', title: 'Off Peak Course',   time: 'Flexible', price: 'Enquire' }
+]
+
+// Social reels - replace `video`/`poster` with your real reel exports (9:16 .mp4)
+// and `url` with the actual Instagram/TikTok permalink for each clip.
+const reels = [
+  { platform: 'instagram', tag: 'Customer story', handle: '@newsagarikadrivingschool', caption: 'First lesson nerves → confident drive', views: '12.4K', video: '/hero-video.mp4', poster: '/hero-poster.jpg', url: 'https://www.instagram.com/' },
+  { platform: 'tiktok',    tag: 'Training',       handle: '@newsagarikadrivingschool', caption: 'Parallel parking made easy',          views: '48.1K', video: '/hero-video.mp4', poster: '/hero-poster.jpg', url: 'https://www.tiktok.com/' },
+  { platform: 'instagram', tag: 'Reaction',       handle: '@newsagarikadrivingschool', caption: 'The moment she passed first try',     views: '21.7K', video: '/hero-video.mp4', poster: '/hero-poster.jpg', url: 'https://www.instagram.com/' },
+  { platform: 'tiktok',    tag: 'Behind the scenes', handle: '@newsagarikadrivingschool', caption: 'Trial lesson behind the wheel',    views: '9.8K',  video: '/hero-video.mp4', poster: '/hero-poster.jpg', url: 'https://www.tiktok.com/' }
 ]
 
 const testimonials = [
@@ -262,7 +271,7 @@ function CoursesPreview() {
         </div>
 
         <div className="courses-preview__grid">
-          {courses.map((c, i) => (
+          {courses.slice(0, 3).map((c, i) => (
             <Reveal key={c.title} direction="up" delay={i * 0.08}>
               <Link to="/courses" className="course-card-lux">
                 <span className="course-card-lux__tag">{c.tag}</span>
@@ -299,6 +308,98 @@ function Marquee() {
         <span>Since 1960</span><span className="hot">✦</span>
       </div>
     </div>
+  )
+}
+
+function ReelCard({ r }) {
+  const videoRef = useRef(null)
+  const [muted, setMuted] = useState(true)
+
+  const toggleSound = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    const v = videoRef.current
+    if (!v) return
+    const next = !v.muted
+    v.muted = next
+    if (!next && v.paused) v.play()
+    setMuted(next)
+  }
+
+  return (
+    <a className="reel-card" href={r.url} target="_blank" rel="noreferrer" aria-label={`Watch reel: ${r.caption}`}>
+      <video
+        ref={videoRef}
+        className="reel-card__video"
+        src={r.video}
+        poster={r.poster}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="metadata"
+      />
+      <div className="reel-card__overlay" />
+      <span className="reel-card__chip">{r.tag}</span>
+      <button
+        type="button"
+        className="reel-card__sound"
+        onClick={toggleSound}
+        aria-label={muted ? 'Unmute video' : 'Mute video'}
+      >
+        {muted ? (
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M11 5 6 9H2v6h4l5 4z"/>
+            <line x1="22" y1="9" x2="16" y2="15"/>
+            <line x1="16" y1="9" x2="22" y2="15"/>
+          </svg>
+        ) : (
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M11 5 6 9H2v6h4l5 4z"/>
+            <path d="M15.5 8.5a5 5 0 0 1 0 7"/>
+            <path d="M19 5a10 10 0 0 1 0 14"/>
+          </svg>
+        )}
+      </button>
+      <span className="reel-card__play" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      </span>
+      <div className="reel-card__foot">
+        <span className="reel-card__views" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+          {r.views}
+        </span>
+        <p className="reel-card__caption">{r.caption}</p>
+        <span className="reel-card__handle">{r.handle}</span>
+      </div>
+    </a>
+  )
+}
+
+function Reels() {
+  return (
+    <section className="section reels">
+      <div className="container">
+        <div className="reels__head">
+          <Reveal>
+            <span className="reels__kicker"><span className="reels__live" />On our socials</span>
+            <h2>Life behind the <span className="serif-italic text-accent">wheel.</span></h2>
+            <p className="reels__lead">
+              Real moments from our school - learner first drives, training sessions,
+              and the reactions that say it all. Tap any clip to watch.
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="reels__row">
+          {reels.slice(0, 3).map((r, i) => (
+            <Reveal key={i} direction="up" delay={i * 0.06}>
+              <ReelCard r={r} />
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
   )
 }
 
@@ -396,8 +497,9 @@ export default function Home() {
       <Features />
       <Marquee />
       <CoursesPreview />
-      <Testimonials />
+      <Reels />
       <StatsBand />
+      <Testimonials />
       <CTA />
     </div>
   )
