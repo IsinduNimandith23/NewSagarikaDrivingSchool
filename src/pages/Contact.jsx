@@ -16,11 +16,11 @@ const PANNIPITIYA_EMBED = 'https://maps.google.com/maps?q=6.8434606,79.9577823&t
 const PANNIPITIYA_LINK = 'https://www.google.com/maps/place/New+Sagarika+Driving+School/@6.8434659,79.9552074,17z/data=!3m1!4b1!4m6!3m5!1s0x3ae2504ebcb20d6b:0xc440d1643f3a0e3a!8m2!3d6.8434606!4d79.9577823!16s%2Fg%2F1ydpvbnlp'
 
 const branches = [
-  { name: 'Pannipitiya Branch',    tag: 'Main Branch', address: '279/11, High Level Road, Mahalwarawa, Kottawa, Pannipitiya', reg: '297',  phones: ['0112745183', '0112837525'], mapEmbed: PANNIPITIYA_EMBED, mapLink: PANNIPITIYA_LINK },
-  { name: 'Thalawathugoda Branch', tag: 'Branch',      address: '214/B3, Pannipitiya Road, Thalawathugoda',                   reg: '972',  phones: ['0112775318'],               mapEmbed: PANNIPITIYA_EMBED, mapLink: PANNIPITIYA_LINK },
-  { name: 'Werahera Branch',       tag: 'Branch',      address: '67/3, Katuwawala, Boralesgamuwa',                            reg: '971',  phones: ['4347650'],                  mapEmbed: PANNIPITIYA_EMBED, mapLink: PANNIPITIYA_LINK },
-  { name: 'Hokandara Branch',      tag: 'Branch',      address: '194/3, Hokandara South, Hokandara',                          reg: '1153', phones: ['0112408643'],               mapEmbed: PANNIPITIYA_EMBED, mapLink: PANNIPITIYA_LINK },
-  { name: 'Mattegoda Branch',      tag: 'Branch',      address: '105/1B, Mattegoda',                                          reg: '1152', phones: ['0112178888'],               mapEmbed: PANNIPITIYA_EMBED, mapLink: PANNIPITIYA_LINK }
+  { name: 'Pannipitiya Branch',    tag: 'Main Branch', address: '279/11, High Level Road, Mahalwarawa, Kottawa, Pannipitiya', reg: 'DS 297',  phones: ['0112745183', '0112837525'], mapEmbed: PANNIPITIYA_EMBED, mapLink: PANNIPITIYA_LINK },
+  { name: 'Thalawathugoda Branch', tag: 'Branch',      address: '214/B3, Pannipitiya Road, Thalawathugoda',                   reg: 'DS 972',  phones: ['0112775318'],               mapEmbed: PANNIPITIYA_EMBED, mapLink: PANNIPITIYA_LINK },
+  { name: 'Werahera Branch',       tag: 'Branch',      address: '67/3, Katuwawala, Boralesgamuwa',                            reg: 'DS 971',  phones: ['4347650'],                  mapEmbed: PANNIPITIYA_EMBED, mapLink: PANNIPITIYA_LINK },
+  { name: 'Hokandara Branch',      tag: 'Branch',      address: '194/3, Hokandara South, Hokandara',                          reg: 'DS 1153', phones: ['0112408643'],               mapEmbed: PANNIPITIYA_EMBED, mapLink: PANNIPITIYA_LINK },
+  { name: 'Mattegoda Branch',      tag: 'Branch',      address: '105/1B, Mattegoda',                                          reg: 'DS 1152', phones: ['0112178888'],               mapEmbed: PANNIPITIYA_EMBED, mapLink: PANNIPITIYA_LINK }
 ]
 
 const faqs = [
@@ -38,13 +38,12 @@ export default function Contact() {
 
   useEffect(() => {
     if (!activeBranch) return
+    // No scroll lock: the modal is a full-screen fixed overlay, and locking
+    // scroll resets window.scrollY to 0, which makes the navbar think it's at
+    // the top and slide its links back to the right. Just handle Escape.
     const onKey = (e) => { if (e.key === 'Escape') setActiveBranch(null) }
     document.addEventListener('keydown', onKey)
-    document.body.style.overflow = 'hidden'
-    return () => {
-      document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
-    }
+    return () => document.removeEventListener('keydown', onKey)
   }, [activeBranch])
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
@@ -159,7 +158,7 @@ export default function Contact() {
               <div className="contact-side__card">
                 <span className="eyebrow">Learning Time</span>
                 <ul className="hours">
-                  <li><span>Monday – Sunday</span><strong>8:00 – 18:00</strong></li>
+                  <li><span>Monday – Sunday</span><strong>8:00am – 6:00pm</strong></li>
                   <li><span>Open Every Day</span><strong>All week</strong></li>
                 </ul>
               </div>
@@ -196,18 +195,12 @@ export default function Contact() {
                       </li>
                     ))}
                   </ul>
-                  <small>Reg. No. {b.reg}</small>
+                  <small>Reg. No: {b.reg}</small>
                   <span className="branch-card__cta">View on map →</span>
                 </button>
               </Reveal>
             ))}
           </div>
-
-          <Reveal delay={0.1}>
-            <p className="branches-learning-time">
-              <span>Learning Time:</span> Mon – Sun · 8:00am to 6:00pm
-            </p>
-          </Reveal>
         </div>
       </section>
 

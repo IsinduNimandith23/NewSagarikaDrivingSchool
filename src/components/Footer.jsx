@@ -128,7 +128,11 @@ export default function Footer() {
 
       <div className="footer__bottom container">
         <span>© {new Date().getFullYear()} New Sagarika Driving School. All rights reserved.</span>
-        <span>Designed with precision · Built for the road ahead</span>
+        <nav className="footer__legal" aria-label="Legal">
+          <Link to="/return-policy">Return Policy</Link>
+          <Link to="/privacy-policy">Privacy Policy</Link>
+          <Link to="/terms-conditions">Terms &amp; Conditions</Link>
+        </nav>
       </div>
     </footer>
   )
