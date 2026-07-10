@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom'
+'use client'
+
+import Link from 'next/link'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef, useState } from 'react'
-import Reveal from '../components/Reveal'
+import Reveal from '@/components/Reveal'
 import './Home.css'
 
 
@@ -113,7 +115,7 @@ function Hero() {
           className="hero__actions"
         >
           <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
-            <Link to="/contact" className="hero-btn hero-btn--primary">
+            <Link href="/contact" className="hero-btn hero-btn--primary">
               <span>Book Now</span>
               <span className="hero-btn__arrow" aria-hidden="true">↗</span>
             </Link>
@@ -235,7 +237,7 @@ function Features() {
           </Reveal>
 
           <Reveal className="why-cell" direction="up" delay={0.2}>
-            <Link to="/gallery" className="why-tile why-tile--link">
+            <Link href="/gallery" className="why-tile why-tile--link">
               <img
                 src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=900&q=70"
                 alt="Open highway stretching ahead"
@@ -266,14 +268,14 @@ function CoursesPreview() {
             <h2>Courses for <span className="serif-italic">every driver.</span></h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <Link to="/courses" className="btn-arrow btn-arrow--light">View all courses →</Link>
+            <Link href="/courses" className="btn-arrow btn-arrow--light">View all courses →</Link>
           </Reveal>
         </div>
 
         <div className="courses-preview__grid">
           {courses.slice(0, 3).map((c, i) => (
             <Reveal key={c.title} direction="up" delay={i * 0.08}>
-              <Link to="/courses" className="course-card-lux">
+              <Link href="/courses" className="course-card-lux">
                 <span className="course-card-lux__tag">{c.tag}</span>
                 <h3>{c.title}</h3>
                 <div className="course-card-lux__meta">
@@ -311,11 +313,11 @@ function Marquee() {
   )
 }
 
-function ReelCard({ r }) {
-  const videoRef = useRef(null)
+function ReelCard({ r }: { r: (typeof reels)[number] }) {
+  const videoRef = useRef<HTMLVideoElement>(null)
   const [muted, setMuted] = useState(true)
 
-  const toggleSound = (e) => {
+  const toggleSound = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
     const v = videoRef.current
@@ -423,7 +425,7 @@ function VerifiedBadge() {
   )
 }
 
-function Stars({ count = 5 }) {
+function Stars({ count = 5 }: { count?: number }) {
   return (
     <div className="g-review__stars" aria-label={`${count} out of 5 stars`}>
       {Array.from({ length: 5 }).map((_, i) => (
@@ -480,8 +482,8 @@ function CTA() {
               <p>Book a complimentary 30-minute trial lesson and experience the difference of a modern driving school.</p>
             </div>
             <div className="cta-lux__actions">
-              <Link to="/contact" className="btn btn-accent">Book Free Trial</Link>
-              <Link to="/courses" className="btn btn-ghost">View Pricing</Link>
+              <Link href="/contact" className="btn btn-accent">Book Free Trial</Link>
+              <Link href="/courses" className="btn btn-ghost">View Pricing</Link>
             </div>
           </div>
         </Reveal>

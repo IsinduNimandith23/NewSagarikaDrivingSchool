@@ -1,6 +1,13 @@
-import LegalPage from './LegalPage'
+import type { Metadata } from 'next'
+import LegalPage, { type LegalSection } from '@/components/LegalPage'
 
-const sections = [
+export const metadata: Metadata = {
+  title: 'Privacy Policy',
+  description:
+    'How New Sagarika Driving School collects, uses and protects the personal information of our trainees and website visitors.',
+}
+
+const sections: LegalSection[] = [
   {
     heading: 'Information we collect',
     body: [
@@ -53,7 +60,7 @@ const sections = [
   },
 ]
 
-export default function PrivacyPolicy() {
+export default function PrivacyPolicyPage() {
   return (
     <LegalPage
       eyebrow="Policies"

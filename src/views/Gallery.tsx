@@ -1,8 +1,10 @@
+'use client'
+
 import { useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import PageHero from '../components/PageHero'
-import Reveal from '../components/Reveal'
+import PageHero from '@/components/PageHero'
+import Reveal from '@/components/Reveal'
 import './Gallery.css'
 
 const filters = ['All', 'Lessons', 'Vehicles', 'Students', 'Events']
@@ -22,8 +24,8 @@ const items = [
   { cat: 'Students', title: 'Defensive class',   tone: 'light' }
 ]
 
-function ParallaxTile({ item, index }) {
-  const ref = useRef(null)
+function ParallaxTile({ item, index }: { item: (typeof items)[number]; index: number }) {
+  const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
   const y = useTransform(scrollYProgress, [0, 1], [30, -30])
 
@@ -102,7 +104,7 @@ export default function Gallery() {
                 <span className="eyebrow">Begin</span>
                 <h2>Be in our next <span className="serif-italic text-accent">success story.</span></h2>
               </div>
-              <Link to="/contact" className="btn btn-accent">Start Today</Link>
+              <Link href="/contact" className="btn btn-accent">Start Today</Link>
             </div>
           </Reveal>
         </div>

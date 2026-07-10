@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import Logo from './Logo'
 import './Footer.css'
 
@@ -69,21 +69,21 @@ export default function Footer() {
 
         <div className="footer__col">
           <h4>Explore</h4>
-          <Link to="/">Home</Link>
-          <Link to="/courses">Courses</Link>
-          <Link to="/gallery">Gallery</Link>
-          <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link>
+          <Link href="/">Home</Link>
+          <Link href="/courses">Courses</Link>
+          <Link href="/gallery">Gallery</Link>
+          <Link href="/about">About</Link>
+          <Link href="/contact">Contact</Link>
         </div>
 
         <div className="footer__col">
           <h4>Courses</h4>
-          <Link to="/courses">Full Time Course</Link>
-          <Link to="/courses">Refresher Course</Link>
-          <Link to="/courses">VIP Course</Link>
-          <Link to="/courses">Off Peak Course</Link>
-          <Link to="/courses">Customized Course</Link>
-          <Link to="/courses">Special Course</Link>
+          <Link href="/courses">Full Time Course</Link>
+          <Link href="/courses">Refresher Course</Link>
+          <Link href="/courses">VIP Course</Link>
+          <Link href="/courses">Off Peak Course</Link>
+          <Link href="/courses">Customized Course</Link>
+          <Link href="/courses">Special Course</Link>
         </div>
 
         <div className="footer__col">
@@ -129,9 +129,9 @@ export default function Footer() {
       <div className="footer__bottom container">
         <span>© {new Date().getFullYear()} New Sagarika Driving School. All rights reserved.</span>
         <nav className="footer__legal" aria-label="Legal">
-          <Link to="/return-policy">Return Policy</Link>
-          <Link to="/privacy-policy">Privacy Policy</Link>
-          <Link to="/terms-conditions">Terms &amp; Conditions</Link>
+          <Link href="/return-policy">Return Policy</Link>
+          <Link href="/privacy-policy">Privacy Policy</Link>
+          <Link href="/terms-conditions">Terms &amp; Conditions</Link>
         </nav>
       </div>
     </footer>

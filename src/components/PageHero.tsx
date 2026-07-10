@@ -1,7 +1,15 @@
+'use client'
+
 import { motion } from 'framer-motion'
 import './PageHero.css'
 
-export default function PageHero({ eyebrow, title, subtitle }) {
+type PageHeroProps = {
+  eyebrow: React.ReactNode
+  title: string
+  subtitle: React.ReactNode
+}
+
+export default function PageHero({ eyebrow, title, subtitle }: PageHeroProps) {
   const hasPeriod = typeof title === 'string' && title.endsWith('.')
   const text = hasPeriod ? title.slice(0, -1) : title
 

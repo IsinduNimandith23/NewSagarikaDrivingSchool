@@ -1,3 +1,5 @@
+'use client'
+
 import { motion } from 'framer-motion'
 
 const variants = {
@@ -12,6 +14,17 @@ const variants = {
   }
 }
 
+type RevealProps = {
+  children: React.ReactNode
+  direction?: keyof typeof variants
+  delay?: number
+  duration?: number
+  once?: boolean
+  amount?: number
+  className?: string
+  style?: React.CSSProperties
+}
+
 export default function Reveal({
   children,
   direction = 'up',
@@ -21,7 +34,7 @@ export default function Reveal({
   amount = 0.25,
   className = '',
   style = {}
-}) {
+}: RevealProps) {
   return (
     <motion.div
       initial="hidden"

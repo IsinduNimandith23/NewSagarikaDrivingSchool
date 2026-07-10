@@ -1,4 +1,7 @@
-import { NavLink, Link, useLocation } from 'react-router-dom'
+'use client'
+
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import Logo from './Logo'
@@ -9,13 +12,13 @@ const links = [
   { to: '/courses', label: 'Courses' },
   { to: '/gallery', label: 'Gallery' },
   { to: '/about', label: 'About' },
-  { to: '/contact', label: 'Contact' }
+  { to: '/contact', label: 'Contact' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-  const { pathname } = useLocation()
+  const pathname = usePathname()
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 60)
@@ -35,40 +38,37 @@ export default function Navbar() {
       className={`nav ${scrolled ? 'nav--scrolled' : ''} ${onDark ? 'nav--on-dark' : 'nav--on-light'}`}
     >
       <div className="nav__inner container">
-        <Link to="/" className="nav__brand" onClick={() => setOpen(false)}>
+        <Link href="/" className="nav__brand" onClick={() => setOpen(false)}>
           <Logo height={88} />
         </Link>
 
         <div className="nav__right">
           <nav className={`nav__links ${open ? 'nav__links--open' : ''}`}>
-            {links.map((l) => (
-              <NavLink
-                key={l.to}
-                to={l.to}
-                end={l.to === '/'}
-                onClick={() => setOpen(false)}
-                className={({ isActive }) =>
-                  `nav__link ${isActive ? 'nav__link--active' : ''}`
-                }
-              >
-                {({ isActive }) => (
-                  <>
-                    {l.label}
-                    {isActive && (
-                      <motion.span
-                        layoutId="nav-active-dot"
-                        className="nav__dot"
-                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                      />
-                    )}
-                  </>
-                )}
-              </NavLink>
-            ))}
+            {links.map((l) => {
+              const isActive =
+                l.to === '/' ? pathname === '/' : pathname.startsWith(l.to)
+              return (
+                <Link
+                  key={l.to}
+                  href={l.to}
+                  onClick={() => setOpen(false)}
+                  className={`nav__link ${isActive ? 'nav__link--active' : ''}`}
+                >
+                  {l.label}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-active-dot"
+                      className="nav__dot"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              )
+            })}
           </nav>
 
           <Link
-            to="/contact"
+            href="/contact"
             onClick={() => setOpen(false)}
             className="nav__cta"
           >

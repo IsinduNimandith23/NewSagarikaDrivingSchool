@@ -1,6 +1,8 @@
+'use client'
+
 import { useState, useEffect } from 'react'
-import PageHero from '../components/PageHero'
-import Reveal from '../components/Reveal'
+import PageHero from '@/components/PageHero'
+import Reveal from '@/components/Reveal'
 import './Contact.css'
 
 const contactInfo = [
@@ -34,21 +36,23 @@ export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', course: 'Full Time Course', message: '' })
   const [sent, setSent] = useState(false)
   const [openFaq, setOpenFaq] = useState(0)
-  const [activeBranch, setActiveBranch] = useState(null)
+  const [activeBranch, setActiveBranch] = useState<(typeof branches)[number] | null>(null)
 
   useEffect(() => {
     if (!activeBranch) return
     // No scroll lock: the modal is a full-screen fixed overlay, and locking
     // scroll resets window.scrollY to 0, which makes the navbar think it's at
     // the top and slide its links back to the right. Just handle Escape.
-    const onKey = (e) => { if (e.key === 'Escape') setActiveBranch(null) }
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setActiveBranch(null) }
     document.addEventListener('keydown', onKey)
     return () => document.removeEventListener('keydown', onKey)
   }, [activeBranch])
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => setForm({ ...form, [e.target.name]: e.target.value })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setSent(true)
     setTimeout(() => setSent(false), 4000)
@@ -107,7 +111,7 @@ export default function Contact() {
 
                 <div className="form__field">
                   <label>Message</label>
-                  <textarea name="message" rows="5" value={form.message}
+                  <textarea name="message" rows={5} value={form.message}
                     onChange={handleChange}
                     placeholder="Tell us a little about yourself, preferred timing, etc." />
                 </div>

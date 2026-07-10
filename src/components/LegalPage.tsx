@@ -1,8 +1,22 @@
-import PageHero from '../components/PageHero'
-import Reveal from '../components/Reveal'
+import PageHero from './PageHero'
+import Reveal from './Reveal'
 import './LegalPage.css'
 
-export default function LegalPage({ eyebrow, title, subtitle, updated, intro, sections }) {
+export type LegalSection = {
+  heading: string
+  body: (string | string[])[]
+}
+
+type LegalPageProps = {
+  eyebrow: React.ReactNode
+  title: string
+  subtitle: React.ReactNode
+  updated?: string
+  intro?: React.ReactNode
+  sections: LegalSection[]
+}
+
+export default function LegalPage({ eyebrow, title, subtitle, updated, intro, sections }: LegalPageProps) {
   return (
     <div className="page">
       <PageHero eyebrow={eyebrow} title={title} subtitle={subtitle} />
@@ -42,7 +56,7 @@ export default function LegalPage({ eyebrow, title, subtitle, updated, intro, se
             <div className="legal__contact glass-warm">
               <h3>Questions about this policy?</h3>
               <p>
-                Reach our team and we'll be glad to help clarify anything before
+                Reach our team and we&apos;ll be glad to help clarify anything before
                 you enrol.
               </p>
               <div className="legal__contact-links">

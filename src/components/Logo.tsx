@@ -1,6 +1,8 @@
+'use client'
+
 import { motion } from 'framer-motion'
 
-export default function Logo({ height = 44 }) {
+export default function Logo({ height = 44 }: { height?: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: -6 }}

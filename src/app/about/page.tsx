@@ -1,7 +1,14 @@
-import PageHero from '../components/PageHero'
-import Reveal from '../components/Reveal'
-import { Link } from 'react-router-dom'
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import PageHero from '@/components/PageHero'
+import Reveal from '@/components/Reveal'
 import './About.css'
+
+export const metadata: Metadata = {
+  title: 'About',
+  description:
+    'An A grade driving school based in Pannipitiya with four more branches across the Colombo district — over 65 years of trusted driver education since 1960.',
+}
 
 const values = [
   { num: '01', title: 'Our Vision',  text: 'To excel as a leader among the finest in the industry.' },
@@ -24,7 +31,7 @@ const team = [
   { name: 'Certified Coaches',    role: 'Highway code & theory experts',  initials: 'CC' }
 ]
 
-export default function About() {
+export default function AboutPage() {
   return (
     <div className="page">
       <PageHero
@@ -60,10 +67,10 @@ export default function About() {
               </p>
               <p style={{ marginTop: '1.2rem' }}>
                 We deliver our service with brand new vehicles equipped with the
-                "Dual pedal system", ensuring safety and confidence for every
+                &quot;Dual pedal system&quot;, ensuring safety and confidence for every
                 learner from the first lesson onward.
               </p>
-              <Link to="/contact" className="btn btn-primary" style={{ marginTop: '1.8rem' }}>
+              <Link href="/contact" className="btn btn-primary" style={{ marginTop: '1.8rem' }}>
                 Visit Our Branch
               </Link>
             </div>
@@ -84,7 +91,7 @@ export default function About() {
                 personality during the early period of the business. He worked
                 closely with the most senior commissioners and well experienced
                 motor traffic examiners while engaging in the business. After he
-                passed away, his sons continued "New Sagarika Driving School" in different
+                passed away, his sons continued &quot;New Sagarika Driving School&quot; in different
                 cities all around Sri Lanka.
               </p>
               <p style={{ marginTop: '1.2rem' }}>

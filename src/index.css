@@ -39,8 +39,8 @@
   --glass-highlight: rgba(255, 255, 255, 0.9);
   --glass-blur: blur(20px) saturate(150%);
 
-  --font-display: 'Manrope', 'Inter', -apple-system, system-ui, sans-serif;
-  --font-body: 'Inter', -apple-system, system-ui, sans-serif;
+  --font-display: var(--font-manrope), var(--font-inter), -apple-system, system-ui, sans-serif;
+  --font-body: var(--font-inter), -apple-system, system-ui, sans-serif;
 
   --radius-lg: 22px;
   --radius-md: 14px;
@@ -54,7 +54,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
-html, body, #root { height: 100%; min-height: 100%; }
+html, body { height: 100%; min-height: 100%; }
 /* overflow-x: clip (not hidden) on both html and body: off-screen reveal/page
    transforms poke past the right edge on small screens, and `hidden` still lets
    focus/programmatic scrolling pan the page sideways and leave it stuck. */

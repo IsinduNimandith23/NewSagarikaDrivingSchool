@@ -1,6 +1,13 @@
-import LegalPage from './LegalPage'
+import type { Metadata } from 'next'
+import LegalPage, { type LegalSection } from '@/components/LegalPage'
 
-const sections = [
+export const metadata: Metadata = {
+  title: 'Terms & Conditions',
+  description:
+    'The terms that apply when you enrol and train with New Sagarika Driving School. By registering, you agree to these terms.',
+}
+
+const sections: LegalSection[] = [
   {
     heading: 'Enrolment and your training card',
     body: [
@@ -49,7 +56,7 @@ const sections = [
   },
 ]
 
-export default function TermsConditions() {
+export default function TermsConditionsPage() {
   return (
     <LegalPage
       eyebrow="Policies"

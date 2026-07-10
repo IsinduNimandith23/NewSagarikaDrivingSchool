@@ -1,6 +1,13 @@
-import LegalPage from './LegalPage'
+import type { Metadata } from 'next'
+import LegalPage, { type LegalSection } from '@/components/LegalPage'
 
-const sections = [
+export const metadata: Metadata = {
+  title: 'Return & Refund Policy',
+  description:
+    'Payment and refund terms for courses at New Sagarika Driving School across all of our Colombo district branches.',
+}
+
+const sections: LegalSection[] = [
   {
     heading: 'Advance payments are non-refundable',
     body: [
@@ -41,7 +48,7 @@ const sections = [
   },
 ]
 
-export default function ReturnPolicy() {
+export default function ReturnPolicyPage() {
   return (
     <LegalPage
       eyebrow="Policies"

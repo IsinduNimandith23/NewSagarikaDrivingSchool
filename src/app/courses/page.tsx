@@ -1,7 +1,14 @@
-import { Link } from 'react-router-dom'
-import PageHero from '../components/PageHero'
-import Reveal from '../components/Reveal'
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import PageHero from '@/components/PageHero'
+import Reveal from '@/components/Reveal'
 import './Courses.css'
+
+export const metadata: Metadata = {
+  title: 'Courses',
+  description:
+    'Driving courses for every driver — Full Time, Refresher, VIP, Off Peak, Customized and Special courses covering every vehicle class from motorcycle to passenger bus.',
+}
 
 const courses = [
   {
@@ -103,7 +110,7 @@ const steps = [
   { n: '04', title: 'Get Licensed',     text: 'We handle the paperwork and accompany you to the RTA examination.' }
 ]
 
-export default function Courses() {
+export default function CoursesPage() {
   return (
     <div className="page">
       <PageHero
@@ -141,7 +148,7 @@ export default function Courses() {
                     ))}
                   </ul>
 
-                  <Link to="/contact" className="btn btn-primary course-tier__btn">
+                  <Link href="/contact" className="btn btn-primary course-tier__btn">
                     Enrol Now
                   </Link>
                 </article>
