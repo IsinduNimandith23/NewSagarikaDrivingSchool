@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: 'Courses',
   description:
     'Driving courses for every driver — Full Time, Refresher, VIP, Off Peak, Customized and Special courses covering every vehicle class from motorcycle to passenger bus.',
+  alternates: { canonical: '/courses' },
 }
 
 const courses = [

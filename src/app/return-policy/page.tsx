@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Return & Refund Policy',
   description:
     'Payment and refund terms for courses at New Sagarika Driving School across all of our Colombo district branches.',
+  alternates: { canonical: '/return-policy' },
 }
 
 const sections: LegalSection[] = [

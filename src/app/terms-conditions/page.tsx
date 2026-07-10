@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Terms & Conditions',
   description:
     'The terms that apply when you enrol and train with New Sagarika Driving School. By registering, you agree to these terms.',
+  alternates: { canonical: '/terms-conditions' },
 }
 
 const sections: LegalSection[] = [

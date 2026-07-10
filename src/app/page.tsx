@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: { absolute: 'New Sagarika Driving School | Driving School in Colombo, Sri Lanka' },
   description:
     'An A grade driving school since 1960 with five branches across Colombo. Learn with certified instructors and brand new dual-pedal vehicles — every vehicle class from motorcycle to passenger bus.',
+  alternates: { canonical: '/' },
 }
 
 export default function HomePage() {

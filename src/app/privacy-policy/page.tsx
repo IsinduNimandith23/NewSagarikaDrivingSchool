@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Privacy Policy',
   description:
     'How New Sagarika Driving School collects, uses and protects the personal information of our trainees and website visitors.',
+  alternates: { canonical: '/privacy-policy' },
 }
 
 const sections: LegalSection[] = [

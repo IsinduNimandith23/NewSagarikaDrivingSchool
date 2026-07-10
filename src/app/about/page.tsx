@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: 'About',
   description:
     'An A grade driving school based in Pannipitiya with four more branches across the Colombo district — over 65 years of trusted driver education since 1960.',
+  alternates: { canonical: '/about' },
 }
 
 const values = [
