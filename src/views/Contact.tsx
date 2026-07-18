@@ -34,7 +34,7 @@ const faqs = [
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', course: 'Full Time Course', message: '' })
-  const [sent, setSent] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
   const [openFaq, setOpenFaq] = useState(0)
   const [activeBranch, setActiveBranch] = useState<(typeof branches)[number] | null>(null)
 
@@ -52,11 +52,23 @@ export default function Contact() {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => setForm({ ...form, [e.target.name]: e.target.value })
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setSent(true)
-    setTimeout(() => setSent(false), 4000)
-    setForm({ name: '', email: '', phone: '', course: 'Full Time Course', message: '' })
+    if (status === 'sending') return
+    setStatus('sending')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (!res.ok) throw new Error('send failed')
+      setStatus('sent')
+      setForm({ name: '', email: '', phone: '', course: 'Full Time Course', message: '' })
+    } catch {
+      setStatus('error')
+    }
+    setTimeout(() => setStatus('idle'), 5000)
   }
 
   return (
@@ -116,12 +128,17 @@ export default function Contact() {
                     placeholder="Tell us a little about yourself, preferred timing, etc." />
                 </div>
 
-                <button type="submit" className="btn btn-accent form__submit">
-                  {sent ? '✓ Message Sent' : 'Send Message'}
+                <button type="submit" className="btn btn-accent form__submit" disabled={status === 'sending'}>
+                  {status === 'sending' ? 'Sending…' : status === 'sent' ? '✓ Message Sent' : 'Send Message'}
                 </button>
-                {sent && (
+                {status === 'sent' && (
                   <div className="form__success">
                     Thank you. We will reach out within four hours.
+                  </div>
+                )}
+                {status === 'error' && (
+                  <div className="form__success form__success--error">
+                    Something went wrong. Please try again or call us on 0112745183.
                   </div>
                 )}
               </form>

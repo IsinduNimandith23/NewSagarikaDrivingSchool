@@ -483,7 +483,7 @@ function CTA() {
             </div>
             <div className="cta-lux__actions">
               <Link href="/contact" className="btn btn-accent">Book Free Trial</Link>
-              <Link href="/courses" className="btn btn-ghost">View Pricing</Link>
+              <Link href="/courses" className="btn btn-ghost">View Courses</Link>
             </div>
           </div>
         </Reveal>
