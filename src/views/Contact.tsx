@@ -142,7 +142,7 @@ export default function Contact() {
                 </button>
                 {status === 'sent' && (
                   <div className="form__success">
-                    Thank you. We will reach out within four hours.
+                    Thank you. We will reach out within few hours.
                   </div>
                 )}
                 {status === 'error' && (
