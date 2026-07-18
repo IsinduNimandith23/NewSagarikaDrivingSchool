@@ -81,8 +81,8 @@ const businessJsonLd = {
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-    opens: '08:00',
-    closes: '18:00',
+    opens: '08:30',
+    closes: '17:30',
   },
   sameAs: [
     'https://www.facebook.com/newsagarika',

@@ -6,30 +6,39 @@ import Reveal from '@/components/Reveal'
 import './Contact.css'
 
 const contactInfo = [
-  { label: 'Phone',    value: '0112745183 / 0112837525',               sub: 'Pannipitiya Main · Mon – Sun · 8am – 6pm' },
+  { label: 'Phone',    value: '0112745183 / 0112837525',               sub: 'Pannipitiya Main · Mon – Sun · 8:30am – 5:30pm' },
   { label: 'Email',    value: 'newsagarikadrivingschool@gmail.com',    sub: 'We reply within four hours' },
   { label: 'Main Branch', value: '279/11, High Level Road, Pannipitiya', sub: 'Plus 4 more branches in Colombo' },
-  { label: 'Learning Time', value: 'Mon – Sun · 8am – 6pm',            sub: 'Open every day of the week' }
+  { label: 'Learning Time', value: 'Mon – Sun · 8:30am – 5:30pm',      sub: 'Open every day of the week' }
 ]
 
-// TODO: replace mapEmbed / mapLink for each branch with its real Google Maps URL.
-// For now every branch points to the Pannipitiya main branch location as a placeholder.
+// TODO: replace mapEmbed / mapLink for Werahera with its real Google Maps URL.
+// It still points to the Pannipitiya main branch location as a placeholder.
 const PANNIPITIYA_EMBED = 'https://maps.google.com/maps?q=6.8434606,79.9577823&t=&z=17&ie=UTF8&iwloc=&output=embed'
 const PANNIPITIYA_LINK = 'https://www.google.com/maps/place/New+Sagarika+Driving+School/@6.8434659,79.9552074,17z/data=!3m1!4b1!4m6!3m5!1s0x3ae2504ebcb20d6b:0xc440d1643f3a0e3a!8m2!3d6.8434606!4d79.9577823!16s%2Fg%2F1ydpvbnlp'
 
+const THALAWATHUGODA_EMBED = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63381.72775158214!2d79.92194446720482!3d6.847618862028639!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae250967c646f37%3A0xe20d6b8fffaeebac!2sNew%20Sagarika%20Learners!5e0!3m2!1sen!2slk!4v1784388942742!5m2!1sen!2slk'
+const THALAWATHUGODA_LINK = 'https://maps.app.goo.gl/Lu3UvaymFj2pjt26A'
+
+const HOKANDARA_EMBED = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63381.72775158214!2d79.92194446720482!3d6.847618862028639!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae251c7175871b5%3A0xc088061bb4c524aa!2sNew%20Sagarika%20Driving%20School!5e0!3m2!1sen!2slk!4v1784389135074!5m2!1sen!2slk'
+const HOKANDARA_LINK = 'https://maps.app.goo.gl/VxwaqeAaBGRhFVZQ8'
+
+const MATTEGODA_EMBED = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63381.72775158214!2d79.92194446720482!3d6.847618862028639!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae251d427676ff9%3A0x5925a2c0dd4dc35b!2sNew%20Sagarika%20Learners!5e0!3m2!1sen!2slk!4v1784389153879!5m2!1sen!2slk'
+const MATTEGODA_LINK = 'https://maps.app.goo.gl/TiFga6o83RZsvVk19'
+
 const branches = [
   { name: 'Pannipitiya Branch',    tag: 'Main Branch', address: '279/11, High Level Road, Mahalwarawa, Kottawa, Pannipitiya', reg: 'DS 297',  phones: ['0112745183', '0112837525'], mapEmbed: PANNIPITIYA_EMBED, mapLink: PANNIPITIYA_LINK },
-  { name: 'Thalawathugoda Branch', tag: 'Branch',      address: '214/B3, Pannipitiya Road, Thalawathugoda',                   reg: 'DS 972',  phones: ['0112775318'],               mapEmbed: PANNIPITIYA_EMBED, mapLink: PANNIPITIYA_LINK },
+  { name: 'Thalawathugoda Branch', tag: 'Branch',      address: '214/B3, Pannipitiya Road, Thalawathugoda',                   reg: 'DS 972',  phones: ['0112775318'],               mapEmbed: THALAWATHUGODA_EMBED, mapLink: THALAWATHUGODA_LINK },
   { name: 'Werahera Branch',       tag: 'Branch',      address: '67/3, Katuwawala, Boralesgamuwa',                            reg: 'DS 971',  phones: ['4347650'],                  mapEmbed: PANNIPITIYA_EMBED, mapLink: PANNIPITIYA_LINK },
-  { name: 'Hokandara Branch',      tag: 'Branch',      address: '194/3, Hokandara South, Hokandara',                          reg: 'DS 1153', phones: ['0112408643'],               mapEmbed: PANNIPITIYA_EMBED, mapLink: PANNIPITIYA_LINK },
-  { name: 'Mattegoda Branch',      tag: 'Branch',      address: '105/1B, Mattegoda',                                          reg: 'DS 1152', phones: ['0112178888'],               mapEmbed: PANNIPITIYA_EMBED, mapLink: PANNIPITIYA_LINK }
+  { name: 'Hokandara Branch',      tag: 'Branch',      address: '194/3, Hokandara South, Hokandara',                          reg: 'DS 1153', phones: ['0112408643'],               mapEmbed: HOKANDARA_EMBED, mapLink: HOKANDARA_LINK },
+  { name: 'Mattegoda Branch',      tag: 'Branch',      address: '105/1B, Mattegoda',                                          reg: 'DS 1152', phones: ['0112178888'],               mapEmbed: MATTEGODA_EMBED, mapLink: MATTEGODA_LINK }
 ]
 
 const faqs = [
   { q: 'What courses do you offer?', a: 'We offer Full Time, Refresher, VIP, Off Peak, Customized and Special courses - covering every vehicle class from motorcycle to passenger bus.' },
   { q: 'What kind of vehicles do you use for training?', a: 'We use brand new vehicles equipped with the "Dual pedal system" for maximum safety and confidence during every lesson.' },
   { q: 'How many branches do you have?', a: 'We have five branches across the Colombo district: Pannipitiya (Main), Thalawathugoda, Werahera, Hokandara and Mattegoda.' },
-  { q: 'What are your learning hours?', a: 'Our learning time is Monday to Sunday, 8:00am to 6:00pm. We are open every day of the week to accommodate every learner\'s schedule.' }
+  { q: 'What are your learning hours?', a: 'Our learning time is Monday to Sunday, 8:30am to 5:30pm. We are open every day of the week to accommodate every learner\'s schedule.' }
 ]
 
 export default function Contact() {
@@ -179,7 +188,7 @@ export default function Contact() {
               <div className="contact-side__card">
                 <span className="eyebrow">Learning Time</span>
                 <ul className="hours">
-                  <li><span>Monday – Sunday</span><strong>8:00am – 6:00pm</strong></li>
+                  <li><span>Monday – Sunday</span><strong>8:30am – 5:30pm</strong></li>
                   <li><span>Open Every Day</span><strong>All week</strong></li>
                 </ul>
               </div>

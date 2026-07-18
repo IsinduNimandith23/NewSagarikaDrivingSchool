@@ -121,7 +121,7 @@ export default function Footer() {
                 <path d="M12 7v5l3 2" />
               </svg>
             </span>
-            Open: Mon - Sun · 8am - 6pm
+            Open: Mon - Sun · 8:30am - 5:30pm
           </span>
         </div>
       </div>
