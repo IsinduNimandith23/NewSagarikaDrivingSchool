@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import Reveal from '@/components/Reveal'
 import './Home.css'
 
@@ -15,19 +15,19 @@ const stats = [
 ]
 
 const courses = [
-  { tag: 'Programme', title: 'Full Time Course',  time: 'Flexible', price: 'Enquire' },
-  { tag: 'Programme', title: 'Refresher Course',  time: 'Flexible', price: 'Enquire' },
-  { tag: 'Programme', title: 'VIP Course',        time: 'Flexible', price: 'Enquire' },
-  { tag: 'Programme', title: 'Off Peak Course',   time: 'Flexible', price: 'Enquire' }
+  { tag: 'Programme', title: 'Full Time Course',  time: 'Flexible', price: 'Enquire', blurb: 'Intensive daily lessons to get you road-ready fast.' },
+  { tag: 'Programme', title: 'Refresher Course',  time: 'Flexible', price: 'Enquire', blurb: 'Rebuild confidence behind the wheel at your own pace.' },
+  { tag: 'Programme', title: 'VIP Course',        time: 'Flexible', price: 'Enquire', blurb: 'Priority scheduling with dedicated one-to-one training.' },
+  { tag: 'Programme', title: 'Off Peak Course',   time: 'Flexible', price: 'Enquire', blurb: 'Learn during quieter hours for the best value.' }
 ]
 
 // Social reels - replace `video`/`poster` with your real reel exports (9:16 .mp4)
 // and `url` with the actual Instagram/TikTok permalink for each clip.
 const reels = [
-  { platform: 'instagram', tag: 'Customer story', handle: '@newsagarikadrivingschool', caption: 'First lesson nerves → confident drive', views: '12.4K', video: '/hero-video.mp4', poster: '/hero-poster.jpg', url: 'https://www.instagram.com/' },
-  { platform: 'tiktok',    tag: 'Training',       handle: '@newsagarikadrivingschool', caption: 'Parallel parking made easy',          views: '48.1K', video: '/hero-video.mp4', poster: '/hero-poster.jpg', url: 'https://www.tiktok.com/' },
-  { platform: 'instagram', tag: 'Reaction',       handle: '@newsagarikadrivingschool', caption: 'The moment she passed first try',     views: '21.7K', video: '/hero-video.mp4', poster: '/hero-poster.jpg', url: 'https://www.instagram.com/' },
-  { platform: 'tiktok',    tag: 'Behind the scenes', handle: '@newsagarikadrivingschool', caption: 'Trial lesson behind the wheel',    views: '9.8K',  video: '/hero-video.mp4', poster: '/hero-poster.jpg', url: 'https://www.tiktok.com/' }
+  { platform: 'instagram', tag: 'Customer story', handle: '@newsagarikadrivingschool', caption: 'First lesson nerves → confident drive', views: '12.4K', video: '/hero-video.mp4', poster: '/hero-poster.jpg', url: 'https://www.instagram.com/newsagarikadrivingschool/' },
+  { platform: 'tiktok',    tag: 'Training',       handle: '@newsagarikadrivingschool', caption: 'Parallel parking made easy',          views: '48.1K', video: '/hero-video.mp4', poster: '/hero-poster.jpg', url: 'https://www.tiktok.com/@newsagarikadrivingschool' },
+  { platform: 'instagram', tag: 'Reaction',       handle: '@newsagarikadrivingschool', caption: 'The moment she passed first try',     views: '21.7K', video: '/hero-video.mp4', poster: '/hero-poster.jpg', url: 'https://www.instagram.com/newsagarikadrivingschool/' },
+  { platform: 'tiktok',    tag: 'Behind the scenes', handle: '@newsagarikadrivingschool', caption: 'Trial lesson behind the wheel',    views: '9.8K',  video: '/hero-video.mp4', poster: '/hero-poster.jpg', url: 'https://www.tiktok.com/@newsagarikadrivingschool' }
 ]
 
 const testimonials = [
@@ -259,34 +259,75 @@ function Features() {
 }
 
 function CoursesPreview() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
+  const [distance, setDistance] = useState(0)
+
+  useEffect(() => {
+    const calc = () => {
+      const track = trackRef.current
+      if (!track) return
+      // Disable the pinned horizontal scroll on small screens (native swipe instead)
+      if (window.innerWidth <= 768) {
+        setDistance(0)
+        return
+      }
+      setDistance(Math.max(0, track.scrollWidth - window.innerWidth))
+    }
+    calc()
+    window.addEventListener('resize', calc)
+    return () => window.removeEventListener('resize', calc)
+  }, [])
+
+  // Higher = slower horizontal scroll (more vertical scroll per card of travel)
+  const SCROLL_FACTOR = 2.2
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end end']
+  })
+  const x = useTransform(scrollYProgress, [0, 1], [0, -distance])
+  const progress = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
+
   return (
-    <section className="section section--dark">
-      <div className="container">
-        <div className="courses-preview__head">
-          <Reveal>
+    <section
+      ref={sectionRef}
+      className="courses-pin section--dark"
+      style={{ height: distance ? `calc(100vh + ${distance * SCROLL_FACTOR}px)` : undefined }}
+    >
+      <div className="courses-pin__sticky">
+        <div className="container courses-pin__head">
+          <div>
             <span className="eyebrow eyebrow--light">Programs</span>
             <h2>Courses for <span className="serif-italic">every driver.</span></h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <Link href="/courses" className="btn-arrow btn-arrow--light">View all courses →</Link>
-          </Reveal>
+          </div>
+          <div className="courses-pin__progress" aria-hidden="true">
+            <motion.span style={{ width: progress }} />
+          </div>
         </div>
 
-        <div className="courses-preview__grid">
-          {courses.slice(0, 3).map((c, i) => (
-            <Reveal key={c.title} direction="up" delay={i * 0.08}>
-              <Link href="/courses" className="course-card-lux">
-                <span className="course-card-lux__tag">{c.tag}</span>
-                <h3>{c.title}</h3>
-                <div className="course-card-lux__meta">
-                  <span>{c.time}</span>
-                  <span>{c.price}</span>
-                </div>
-                <div className="course-card-lux__arrow">→</div>
-              </Link>
-            </Reveal>
+        <motion.div ref={trackRef} className="courses-pin__track" style={{ x }}>
+          {courses.map((c, i) => (
+            <Link key={c.title} href="/courses" className="course-panel">
+              <span className="course-panel__index">0{i + 1}</span>
+              <span className="course-panel__tag">{c.tag}</span>
+              <h3>{c.title}</h3>
+              <p className="course-panel__blurb">{c.blurb}</p>
+              <div className="course-panel__meta">
+                <span>{c.time}</span>
+                <span>{c.price}</span>
+              </div>
+              <div className="course-panel__arrow">→</div>
+            </Link>
           ))}
-        </div>
+
+          <Link href="/courses" className="course-panel course-panel--cta">
+            <span className="course-panel__tag">Explore</span>
+            <h3>See all courses</h3>
+            <p className="course-panel__blurb">Browse the full range and find the programme that fits you.</p>
+            <span className="course-panel__cta-arrow">→</span>
+          </Link>
+        </motion.div>
       </div>
     </section>
   )
@@ -342,7 +383,10 @@ function ReelCard({ r }: { r: (typeof reels)[number] }) {
         preload="metadata"
       />
       <div className="reel-card__overlay" />
-      <span className="reel-card__chip">{r.tag}</span>
+      <span className="reel-card__chip">
+        {r.platform === 'instagram' ? <InstagramIcon /> : <TikTokIcon />}
+        {r.tag}
+      </span>
       <button
         type="button"
         className="reel-card__sound"
@@ -378,12 +422,30 @@ function ReelCard({ r }: { r: (typeof reels)[number] }) {
   )
 }
 
+function InstagramIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/>
+      <circle cx="12" cy="12" r="4.2"/>
+      <circle cx="17.3" cy="6.7" r="1.15" fill="currentColor" stroke="none"/>
+    </svg>
+  )
+}
+
+function TikTokIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z"/>
+    </svg>
+  )
+}
+
 function Reels() {
   return (
     <section className="section reels">
       <div className="container">
         <div className="reels__head">
-          <Reveal>
+          <Reveal className="reels__head-copy">
             <span className="reels__kicker"><span className="reels__live" />On our socials</span>
             <h2>Life behind the <span className="serif-italic text-accent">wheel.</span></h2>
             <p className="reels__lead">
@@ -391,11 +453,21 @@ function Reels() {
               and the reactions that say it all. Tap any clip to watch.
             </p>
           </Reveal>
+          <Reveal delay={0.12} className="reels__follow">
+            <a href="https://www.instagram.com/newsagarikadrivingschool/" target="_blank" rel="noreferrer" className="reels__follow-link">
+              <InstagramIcon />
+              <span>Instagram</span>
+            </a>
+            <a href="https://www.tiktok.com/@newsagarikadrivingschool" target="_blank" rel="noreferrer" className="reels__follow-link">
+              <TikTokIcon />
+              <span>TikTok</span>
+            </a>
+          </Reveal>
         </div>
 
         <div className="reels__row">
-          {reels.slice(0, 3).map((r, i) => (
-            <Reveal key={i} direction="up" delay={i * 0.06}>
+          {reels.map((r, i) => (
+            <Reveal key={i} direction="up" delay={i * 0.08} className="reels__cell">
               <ReelCard r={r} />
             </Reveal>
           ))}
