@@ -127,7 +127,15 @@ export default function Footer() {
       </div>
 
       <div className="footer__bottom container">
-        <span>© {new Date().getFullYear()} New Sagarika Driving School. All rights reserved.</span>
+        <span>
+          © {new Date().getFullYear()} New Sagarika Driving School. All rights reserved.
+          <span className="footer__credit">
+            Built by{' '}
+            <a href="https://dkaylabs.vercel.app/" target="_blank" rel="noopener noreferrer">
+              DKayLabs
+            </a>
+          </span>
+        </span>
         <nav className="footer__legal" aria-label="Legal">
           <Link href="/return-policy">Return Policy</Link>
           <Link href="/privacy-policy">Privacy Policy</Link>
