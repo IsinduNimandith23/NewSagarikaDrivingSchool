@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Manrope, Inter } from 'next/font/google'
+import { Manrope, Inter, Noto_Sans_Sinhala } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
@@ -16,6 +16,15 @@ const inter = Inter({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
   variable: '--font-inter',
+  display: 'swap',
+})
+
+// Sinhala script has no coverage in Manrope/Inter, so pages offering a Sinhala
+// translation fall back to this via the :lang(si) rule in index.css.
+const notoSinhala = Noto_Sans_Sinhala({
+  subsets: ['sinhala'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-sinhala',
   display: 'swap',
 })
 
@@ -99,7 +108,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${manrope.variable} ${inter.variable}`}>
+    <html lang="en" className={`${manrope.variable} ${inter.variable} ${notoSinhala.variable}`}>
       <body>
         <script
           type="application/ld+json"

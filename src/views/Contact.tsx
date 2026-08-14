@@ -3,6 +3,12 @@
 import { useState, useEffect } from 'react'
 import PageHero from '@/components/PageHero'
 import Reveal from '@/components/Reveal'
+import {
+  COURSE_OPTIONS,
+  DEFAULT_COURSE,
+  ENQUIRY_ANCHOR,
+  courseLabelFromSlug,
+} from '@/lib/courses'
 import './Contact.css'
 
 const contactInfo = [
@@ -42,10 +48,21 @@ const faqs = [
 ]
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', course: 'Full Time Course', message: '' })
+  const [form, setForm] = useState({ name: '', email: '', phone: '', course: DEFAULT_COURSE as string, message: '' })
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
   const [openFaq, setOpenFaq] = useState(0)
   const [activeBranch, setActiveBranch] = useState<(typeof branches)[number] | null>(null)
+
+  // Preselect the course when arriving from an Enrol Now button on /courses,
+  // e.g. /contact?course=vip#enquiry. Read after mount rather than through
+  // useSearchParams so this page stays statically prerendered (useSearchParams
+  // would force the whole view behind a Suspense boundary). An unknown slug is
+  // ignored and the default stands.
+  useEffect(() => {
+    const slug = new URLSearchParams(window.location.search).get('course')
+    const label = courseLabelFromSlug(slug)
+    if (label) setForm((f) => ({ ...f, course: label }))
+  }, [])
 
   useEffect(() => {
     if (!activeBranch) return
@@ -73,7 +90,7 @@ export default function Contact() {
       })
       if (!res.ok) throw new Error('send failed')
       setStatus('sent')
-      setForm({ name: '', email: '', phone: '', course: 'Full Time Course', message: '' })
+      setForm({ name: '', email: '', phone: '', course: DEFAULT_COURSE, message: '' })
     } catch {
       setStatus('error')
     }
@@ -91,7 +108,7 @@ export default function Contact() {
       <section className="section section--alt">
         <div className="container contact-grid">
           <Reveal direction="up">
-            <div className="contact-form">
+            <div className="contact-form" id={ENQUIRY_ANCHOR}>
               <span className="eyebrow">Send a Message</span>
               <h2 style={{ marginTop: '0.6rem', marginBottom: '2rem' }}>
                 Book your <span className="serif-italic text-accent">free trial.</span>
@@ -120,12 +137,9 @@ export default function Contact() {
                   <div className="form__field">
                     <label>Course</label>
                     <select name="course" value={form.course} onChange={handleChange}>
-                      <option>Full Time Course</option>
-                      <option>Refresher Course</option>
-                      <option>VIP Course</option>
-                      <option>Off Peak Course</option>
-                      <option>Customized Course</option>
-                      <option>Special Course</option>
+                      {COURSE_OPTIONS.map((c) => (
+                        <option key={c.slug} value={c.label}>{c.label}</option>
+                      ))}
                     </select>
                   </div>
                 </div>

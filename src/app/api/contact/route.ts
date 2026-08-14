@@ -1,13 +1,5 @@
 import { Resend } from 'resend'
-
-const COURSES = [
-  'Full Time Course',
-  'Refresher Course',
-  'VIP Course',
-  'Off Peak Course',
-  'Customized Course',
-  'Special Course',
-]
+import { COURSE_LABELS, DEFAULT_COURSE } from '@/lib/courses'
 
 const escapeHtml = (s: string) =>
   s.replace(/[&<>"']/g, (c) =>
@@ -30,7 +22,7 @@ export async function POST(req: Request) {
   const name = body.name?.trim() ?? ''
   const email = body.email?.trim() ?? ''
   const phone = body.phone?.trim() ?? ''
-  const course = COURSES.includes(body.course ?? '') ? body.course! : 'Full Time Course'
+  const course = COURSE_LABELS.includes(body.course ?? '') ? body.course! : DEFAULT_COURSE
   const message = body.message?.trim() ?? ''
 
   if (!name || !email || !phone) {

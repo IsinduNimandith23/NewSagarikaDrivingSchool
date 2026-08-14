@@ -71,6 +71,45 @@ body {
   font-weight: 400;
 }
 
+/* Sinhala content (the Courses page translation). Manrope/Inter carry no
+   Sinhala glyphs, so anything marked lang="si" switches to Noto Sans Sinhala.
+   The tight display letter-spacing also breaks Sinhala shaping, hence the
+   resets on headings, and the script needs a little more line-height. */
+:lang(si) {
+  font-family: var(--font-sinhala), var(--font-body);
+  letter-spacing: normal;
+  line-height: 1.65;
+}
+:lang(si) h1, :lang(si) h2, :lang(si) h3, :lang(si) h4 {
+  font-family: var(--font-sinhala), var(--font-display);
+  letter-spacing: normal;
+  line-height: 1.35;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+/* Page-hero headline. Sinhala words are long and the `ch` unit measures the
+   digit zero, which badly under-estimates Sinhala conjuncts — so 18ch wraps the
+   headline a line early. Dropping the cap lets it wrap at the container, and the
+   smaller size keeps it at two lines: 5.4vw is under the ~6.3vw where the first
+   three words stop fitting, and above the ~4vw where the whole line would
+   collapse onto one. */
+:lang(si) .page-hero h1 {
+  font-size: clamp(2rem, 5.4vw, 4.8rem);
+  max-width: none;
+}
+
+:lang(si) .serif-italic {
+  font-family: var(--font-sinhala), var(--font-display);
+  letter-spacing: normal;
+}
+:lang(si) .eyebrow,
+:lang(si) .course-tier__badge,
+:lang(si) .course-tier__tier,
+:lang(si) .course-tier__meta strong {
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+
 a { color: inherit; text-decoration: none; }
 button { font-family: inherit; cursor: pointer; }
 img, svg, video { display: block; max-width: 100%; height: auto; }
