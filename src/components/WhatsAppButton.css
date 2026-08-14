@@ -1,0 +1,121 @@
+/* ================================================
+   FLOATING WHATSAPP BUTTON
+   Fixed bottom-right on every page.
+   z-index sits above the nav (50) but below the
+   branch map modal (1000) so it never covers a dialog.
+================================================ */
+
+.whatsapp-fab {
+  --wa-green: #25D366;
+  --wa-green-deep: #128C7E;
+  --wa-size: 56px;
+
+  position: fixed;
+  right: max(1.2rem, env(safe-area-inset-right));
+  bottom: max(1.2rem, env(safe-area-inset-bottom));
+  z-index: 60;
+
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: var(--wa-size);
+  padding: 0;
+  border-radius: 999px;
+  background: linear-gradient(140deg, var(--wa-green), var(--wa-green-deep));
+  color: #fff;
+  box-shadow:
+    0 10px 28px rgba(18, 140, 126, 0.34),
+    0 2px 8px rgba(10, 10, 10, 0.12);
+  transition:
+    transform 0.35s var(--ease-out-soft),
+    box-shadow 0.35s var(--ease-out-soft),
+    gap 0.35s var(--ease-out-soft),
+    padding 0.35s var(--ease-out-soft);
+}
+
+.whatsapp-fab svg {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  margin: 0 calc((var(--wa-size) - 28px) / 2);
+}
+
+/* Label stays collapsed to zero width until hover/focus so the button
+   is a plain circle at rest. */
+.whatsapp-fab__label {
+  position: relative;
+  z-index: 1;
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  opacity: 0;
+  transition:
+    max-width 0.4s var(--ease-out-soft),
+    opacity 0.3s var(--ease-out-soft);
+}
+
+.whatsapp-fab:hover,
+.whatsapp-fab:focus-visible {
+  transform: translateY(-3px);
+  box-shadow:
+    0 16px 36px rgba(18, 140, 126, 0.42),
+    0 3px 10px rgba(10, 10, 10, 0.14);
+  outline: none;
+}
+.whatsapp-fab:hover .whatsapp-fab__label,
+.whatsapp-fab:focus-visible .whatsapp-fab__label {
+  max-width: 160px;
+  padding-right: 1.3rem;
+  opacity: 1;
+}
+.whatsapp-fab:hover svg,
+.whatsapp-fab:focus-visible svg {
+  margin-right: 0.2rem;
+}
+
+.whatsapp-fab:focus-visible {
+  box-shadow:
+    0 0 0 3px #fff,
+    0 0 0 6px var(--wa-green),
+    0 16px 36px rgba(18, 140, 126, 0.42);
+}
+
+.whatsapp-fab:active { transform: translateY(-1px) scale(0.97); }
+
+/* Slow outward ping so the button reads as "live chat" without nagging. */
+.whatsapp-fab__pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: var(--wa-green);
+  opacity: 0.55;
+  animation: whatsapp-pulse 2.6s var(--ease-out-soft) infinite;
+}
+
+@keyframes whatsapp-pulse {
+  0%        { transform: scale(1);    opacity: 0.5; }
+  60%, 100% { transform: scale(1.55); opacity: 0; }
+}
+
+@media (max-width: 600px) {
+  .whatsapp-fab { --wa-size: 52px; }
+  .whatsapp-fab svg { width: 26px; height: 26px; }
+  /* No room for the expanded label on phones - keep it a circle. */
+  .whatsapp-fab__label { display: none; }
+  .whatsapp-fab:hover svg,
+  .whatsapp-fab:focus-visible svg { margin-right: calc((var(--wa-size) - 26px) / 2); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-fab,
+  .whatsapp-fab__label { transition: none; }
+  .whatsapp-fab:hover,
+  .whatsapp-fab:focus-visible { transform: none; }
+  .whatsapp-fab__pulse { animation: none; opacity: 0; }
+}
