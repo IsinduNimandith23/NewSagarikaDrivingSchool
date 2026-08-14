@@ -10,6 +10,7 @@ import './Navbar.css'
 const links = [
   { to: '/', label: 'Home' },
   { to: '/courses', label: 'Courses' },
+  { to: '/resources', label: 'Resources' },
   { to: '/gallery', label: 'Gallery' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },

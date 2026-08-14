@@ -71,6 +71,7 @@ export default function Footer() {
           <h4>Explore</h4>
           <Link href="/">Home</Link>
           <Link href="/courses">Courses</Link>
+          <Link href="/resources">Resources</Link>
           <Link href="/gallery">Gallery</Link>
           <Link href="/about">About</Link>
           <Link href="/contact">Contact</Link>

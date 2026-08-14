@@ -66,6 +66,15 @@
   }
 }
 
+/* Six links plus the CTA leave little room between the logo and the viewport
+   edge on smaller laptops - tighten the spacing rather than let the centred
+   capsule creep into the logo. */
+@media (min-width: 921px) and (max-width: 1200px) {
+  .nav__right { gap: 1.1rem; padding-left: 1.1rem; }
+  .nav__links { gap: 1.1rem; }
+  .nav__link  { font-size: 0.98rem; }
+}
+
 /* ===== iOS-style liquid-glass capsule (scrolled) =====
    Only the visual chrome changes - padding/gap/sizes stay identical so
    nothing visibly resizes or jumps when the user scrolls. */
@@ -317,6 +326,7 @@
   .nav__links--open .nav__link:nth-child(3) { transition-delay: 0.15s; }
   .nav__links--open .nav__link:nth-child(4) { transition-delay: 0.2s; }
   .nav__links--open .nav__link:nth-child(5) { transition-delay: 0.25s; }
+  .nav__links--open .nav__link:nth-child(6) { transition-delay: 0.3s; }
   .nav__links .nav__link:hover,
   .nav__links .nav__link--active { background: var(--orange-soft); color: var(--ink); }
 }
