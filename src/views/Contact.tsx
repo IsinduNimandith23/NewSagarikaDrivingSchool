@@ -15,7 +15,7 @@ const contactInfo = [
   { label: 'Phone',    value: '0112745183 / 0112837525',               sub: 'Pannipitiya Main · Mon – Sun · 8:30am – 5:30pm' },
   { label: 'Email',    value: 'newsagarikadrivingschool@gmail.com',    sub: 'We reply within four hours' },
   { label: 'Main Branch', value: '279/11, High Level Road, Pannipitiya', sub: 'Plus 4 more branches in Colombo' },
-  { label: 'Learning Time', value: 'Mon – Sun · 8:30am – 5:30pm',      sub: 'Open every day of the week' }
+  { label: 'Learning Time', value: 'Mon – Sun · 8:30am – 5:30pm',      sub: 'Open every day except Poya days' }
 ]
 
 // TODO: replace mapEmbed / mapLink for Werahera with its real Google Maps URL.
@@ -44,7 +44,7 @@ const faqs = [
   { q: 'What courses do you offer?', a: 'We offer Full Time, Refresher, VIP, Off Peak, Customized and Special courses - covering every vehicle class from motorcycle to passenger bus.' },
   { q: 'What kind of vehicles do you use for training?', a: 'We use brand new vehicles equipped with the "Dual pedal system" for maximum safety and confidence during every lesson.' },
   { q: 'How many branches do you have?', a: 'We have five branches across the Colombo district: Pannipitiya (Main), Thalawathugoda, Werahera, Hokandara and Mattegoda.' },
-  { q: 'What are your learning hours?', a: 'Our learning time is Monday to Sunday, 8:30am to 5:30pm. We are open every day of the week to accommodate every learner\'s schedule.' }
+  { q: 'What are your learning hours?', a: 'Our learning time is Monday to Sunday, 8:30am to 5:30pm. We are open every day of the week to accommodate every learner\'s schedule, and closed on Poya days.' }
 ]
 
 export default function Contact() {
@@ -203,7 +203,7 @@ export default function Contact() {
                 <span className="eyebrow">Learning Time</span>
                 <ul className="hours">
                   <li><span>Monday – Sunday</span><strong>8:30am – 5:30pm</strong></li>
-                  <li><span>Open Every Day</span><strong>All week</strong></li>
+                  <li><span>Poya Days</span><strong>Closed</strong></li>
                 </ul>
               </div>
             </Reveal>

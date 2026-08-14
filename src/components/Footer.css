@@ -182,6 +182,10 @@
 
 .footer__contact-icon svg { position: relative; top: 3px; width: 16px; height: 16px; }
 
+/* Hours row: keep the Poya note on its own line under the opening times */
+.footer__contact-text { display: flex; flex-direction: column; gap: 0.15rem; }
+.footer__contact-note { color: rgba(255, 255, 255, 0.55); font-size: 0.82rem; }
+
 a.footer__contact:hover { color: #fff; }
 a.footer__contact:hover .footer__contact-icon {
   background: var(--accent);

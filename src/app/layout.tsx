@@ -61,13 +61,15 @@ export const metadata: Metadata = {
 
 // LocalBusiness structured data for Google local search results
 // (address/phone/hours are the Pannipitiya main branch).
+// Poya days are lunar, so schema.org cannot express them as a recurring closure -
+// the closure is noted in `description` and shown on the site copy instead.
 const businessJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   additionalType: 'https://schema.org/EducationalOrganization',
   name: 'New Sagarika Driving School',
   description:
-    'An A grade driving school since 1960 with five branches across the Colombo district. Training for every vehicle class from motorcycle to passenger bus with brand new dual-pedal vehicles.',
+    'An A grade driving school since 1960 with five branches across the Colombo district. Training for every vehicle class from motorcycle to passenger bus with brand new dual-pedal vehicles. Open Monday to Sunday, 8:30am to 5:30pm; closed on Poya days.',
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
   logo: `${process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'}/logo.png`,
   image: `${process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'}/og-image.jpg`,
