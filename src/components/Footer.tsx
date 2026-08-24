@@ -135,8 +135,8 @@ export default function Footer() {
           © {new Date().getFullYear()} New Sagarika Driving School. All rights reserved.
           <span className="footer__credit">
             Built by{' '}
-            <a href="https://dkaylabs.vercel.app/" target="_blank" rel="noopener noreferrer">
-              DKayLabs
+            <a href="https://www.dkaylabs.com/" target="_blank" rel="noopener noreferrer">
+              DKayLABS
             </a>
           </span>
         </span>
