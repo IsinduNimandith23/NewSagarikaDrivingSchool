@@ -26,8 +26,7 @@ const courses = [
 const reels = [
   { platform: 'instagram', tag: 'Customer story', handle: '@newsagarikadrivingschool', caption: 'First lesson nerves → confident drive', views: '12.4K', video: '/hero-video.mp4', poster: '/hero-poster.jpg', url: 'https://www.instagram.com/newsagarikadrivingschool/' },
   { platform: 'tiktok',    tag: 'Training',       handle: '@newsagarikadrivingschool', caption: 'Parallel parking made easy',          views: '48.1K', video: '/hero-video.mp4', poster: '/hero-poster.jpg', url: 'https://www.tiktok.com/@newsagarikadrivingschool' },
-  { platform: 'instagram', tag: 'Reaction',       handle: '@newsagarikadrivingschool', caption: 'The moment she passed first try',     views: '21.7K', video: '/hero-video.mp4', poster: '/hero-poster.jpg', url: 'https://www.instagram.com/newsagarikadrivingschool/' },
-  { platform: 'tiktok',    tag: 'Behind the scenes', handle: '@newsagarikadrivingschool', caption: 'Trial lesson behind the wheel',    views: '9.8K',  video: '/hero-video.mp4', poster: '/hero-poster.jpg', url: 'https://www.tiktok.com/@newsagarikadrivingschool' }
+  { platform: 'instagram', tag: 'Reaction',       handle: '@newsagarikadrivingschool', caption: 'The moment she passed first try',     views: '21.7K', video: '/hero-video.mp4', poster: '/hero-poster.jpg', url: 'https://www.instagram.com/newsagarikadrivingschool/' }
 ]
 
 const testimonials = [
@@ -193,7 +192,9 @@ function Features() {
               <div className="why-tile__shade" />
               <div className="why-tile__info">
                 <h3>Certified Instructors</h3>
-                <p>Licensed trainers with over a decade of road experience guide every lesson, one-on-one.</p>
+                <div className="why-tile__more">
+                  <p>Licensed trainers with over a decade of road experience guide every lesson, one-on-one.</p>
+                </div>
               </div>
             </article>
           </Reveal>
@@ -208,7 +209,9 @@ function Features() {
               <div className="why-tile__shade" />
               <div className="why-tile__info">
                 <h3>Modern Vehicle Fleet</h3>
-                <p>Dual-control, fully-serviced cars and bikes with the latest safety standards.</p>
+                <div className="why-tile__more">
+                  <p>Dual-control, fully-serviced cars and bikes with the latest safety standards.</p>
+                </div>
               </div>
             </article>
           </Reveal>
@@ -231,7 +234,9 @@ function Features() {
               <div className="why-tile__shade" />
               <div className="why-tile__info">
                 <h3>Defensive &amp; Night Driving</h3>
-                <p>Hazard perception, night driving and emergency control are built into the curriculum.</p>
+                <div className="why-tile__more">
+                  <p>Hazard perception, night driving and emergency control are built into the curriculum.</p>
+                </div>
               </div>
             </article>
           </Reveal>
@@ -248,7 +253,9 @@ function Features() {
                 <h3>
                   See lessons in action <span className="why-tile__arrow" aria-hidden="true">→</span>
                 </h3>
-                <p>Browse our gallery of students, vehicles and license-day moments.</p>
+                <div className="why-tile__more">
+                  <p>Browse our gallery of students, vehicles and license-day moments.</p>
+                </div>
               </div>
             </Link>
           </Reveal>

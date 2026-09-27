@@ -326,6 +326,16 @@
   bottom: 1.2rem;
   z-index: 2;
   color: #fff;
+  /* caption row expands 0fr → 1fr on hover (animates without layout-thrashing max-height) */
+  display: grid;
+  grid-template-rows: auto 0fr;
+  transition: grid-template-rows 0.45s var(--ease-out-soft);
+}
+.why-tile:hover .why-tile__info { grid-template-rows: auto 1fr; }
+
+.why-tile__more {
+  min-height: 0;
+  overflow: hidden;
 }
 
 .why-tile__info h3 {
@@ -340,23 +350,19 @@
   color: rgba(255, 255, 255, 0.85);
   line-height: 1.5;
   margin-top: 0.4rem;
-  max-height: 0;
   opacity: 0;
   transform: translateY(8px);
-  overflow: hidden;
-  transition: max-height 0.45s var(--ease-out-soft), opacity 0.45s var(--ease-out-soft),
-    transform 0.45s var(--ease-out-soft);
+  transition: opacity 0.45s var(--ease-out-soft), transform 0.45s var(--ease-out-soft);
 }
 .why-tile:hover .why-tile__info p {
-  max-height: 6em;
   opacity: 1;
   transform: translateY(0);
 }
 
 /* Touch devices have no hover - keep captions visible. */
 @media (hover: none) {
+  .why-tile__info { grid-template-rows: auto 1fr; }
   .why-tile__info p {
-    max-height: none;
     opacity: 1;
     transform: none;
   }
@@ -637,7 +643,7 @@
   justify-content: space-between;
   gap: 2rem;
   flex-wrap: wrap;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .reels__follow {
@@ -701,14 +707,18 @@
   line-height: 1.55;
 }
 
+/* Card width is derived from viewport height so the heading and the full
+   9:16 cards fit on one screen (22rem ≈ nav + heading + stagger offset) */
 .reels__row {
+  --reel-w: clamp(11rem, calc((100svh - 22rem) * 9 / 16), 24rem);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(3, minmax(0, var(--reel-w)));
+  justify-content: center;
+  gap: clamp(1.5rem, 3vw, 3.5rem);
   align-items: start;
 }
 /* Editorial rhythm — even cards sit lower for a staggered, hand-placed feel */
-.reels__cell:nth-child(even) { margin-top: 2.6rem; }
+.reels__cell:nth-child(even) { margin-top: 1.6rem; }
 
 .reel-card {
   position: relative;
@@ -860,10 +870,10 @@
   color: rgba(255, 255, 255, 0.62);
 }
 
-/* Tablet — two staggered columns */
+/* Tablet — tighter staggered columns */
 @media (max-width: 1024px) {
-  .reels__row { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
-  .reels__cell:nth-child(even) { margin-top: 2rem; }
+  .reels__row { gap: 1.2rem; }
+  .reels__cell:nth-child(even) { margin-top: 1.2rem; }
 }
 
 /* Mobile — edge-bleed snap carousel with big, readable cards */
